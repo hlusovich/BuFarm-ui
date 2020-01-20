@@ -3,7 +3,8 @@ import {Form, Icon, Input, Button, Checkbox, Row, Col, notification} from 'antd'
 import {AddressIn, signIn, getUser, getAddress, getProducts} from "../../API/API";
 import {withRouter} from 'react-router-dom'
 import {Link} from "react-router-dom";
-
+import { Carousel } from 'antd';
+import ProductCart from "../ProductCart/ProductCart";
 function Products() {
     const [products, setProducts] = useState([]);
     const [page, setPage] = useState(0);
@@ -23,6 +24,9 @@ function Products() {
             setIsFetching(false)
         }
     };
+    function onChange(a, b, c) {
+        console.log(a, b, c);
+    }
 
     useEffect(() => {
         fetchProducts()
@@ -48,28 +52,29 @@ function Products() {
     }, []);
 
     return (
+
         <Row>
-            <Col span={6} offset={9}>
-                {
-
-                    products.map((product) => {
-                            return (
-                                <Link to={"/products/" + product.id} className='test'>
-                                    <p>{product.id}</p>
-                                    <h1>{product.name}</h1>
-                                    <h3>{product.type}</h3>
-                                    <ul>
-                                        {
-                                            product.comments.map((comment) => <li>{comment.text}</li>)
-                                        }
-                                    </ul>
-                                </Link>
-                            )
-                        }
-                    )
-                }
-
+            <Col span={4}>
+                Filter
             </Col>
+            <Col span={20}>
+                <Row>
+                    {
+
+                        products.map((product) => {
+                                return (
+                                    <Col span={6}>
+                                        <ProductCart product={product}/>
+                                    </Col>
+
+                                )
+                            }
+                        )
+                    }
+                </Row>
+            </Col>
+
+
         </Row>)
 }
 

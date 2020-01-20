@@ -26,6 +26,7 @@ import {Spin} from 'antd';
 import Training from "./components/training/training";
 import {Trainnn} from "./context/context2";
 import {verifyToken} from "./API/API";
+import BlackButton from "./components/BlackButton/BlackButton";
 
 function App() {
     const {isAuthenticated, setIsAuthenticated} = useAuthentication();
@@ -58,11 +59,10 @@ function App() {
         return (
 
             <CartProvider>
-                <Trainnn>
                 <Router>
-
                     <div>
                         <Header text={'sdfsdf'}/>
+
 
                         <Switch>
                             <PrivateRoute path='/userdata' component={UserData}/>
@@ -75,14 +75,9 @@ function App() {
                             <Route path="/products">
                                 <Products/>
                             </Route>
-
-                            <Route path="/training">
-                                <Training/>
-                            </Route>
-
                             <Route path="/main-page">
-                                <MainPage/>
-                            </Route>
+                            <MainPage/>
+                        </Route>
                             <Route path="/users">
                                 <Users/>
                             </Route>
@@ -101,8 +96,6 @@ function App() {
                         </Switch>
                     </div>
                 </Router>
-                </Trainnn>
-
             </CartProvider>
         );
     } else {

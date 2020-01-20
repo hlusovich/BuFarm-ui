@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {BrowserRouter as Router, Switch, Route, Link, useParams} from "react-router-dom";
 import {getProductDetails, verifyToken} from "../../API/API";
-import {Button, Col, Input, Row} from "antd";
+import {Button, Carousel, Col, Input, Row} from "antd";
 import {useAuthentication} from "../../context/authentication";
 import { useCart} from "../../context/cart";
 
@@ -32,19 +32,34 @@ function ProductDetails() {
     }, [])
 
     const clickAddProduct = ()=>{
-        addProductToCart(product)
+        let productInfo = {
+            product:product,
+            count :count
+        };
+
+        addProductToCart(productInfo)
     }
 
     return (
         <Row>
-            <Col span={6}>
-                <div>
-                    <h1>{product.name}</h1>
-                    <h1>{product.price}</h1>
-                    <Input value={count} placeholder="количество" name="количество" onChange={changeCount} type="number"/>
-                    <Button disabled={!count} ghost={isAuthenticated} onClick={clickAddProduct}> add to cart</Button>
-                </div>
-            </Col>
+            {
+                product &&
+                <Col span={6}>
+                    <div>
+                        <h1>{product.name}</h1>
+                        <h1>{product.price}</h1>
+                        <Input value={count} placeholder="количество" name="количество" onChange={changeCount} type="number"/>
+                        <Button disabled={!count} ghost={isAuthenticated} onClick={clickAddProduct}> add to cart</Button>
+                        <Carousel>
+                            {
+                                product.images.map((image)=><div class="carusel_image"><img src={image.url}/></div>)
+                            }
+
+                        </Carousel>
+                    </div>
+                </Col>
+            }
+
         </Row>
     )
 
