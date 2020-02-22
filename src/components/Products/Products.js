@@ -3,13 +3,17 @@ import {Form, Icon, Input, Button, Checkbox, Row, Col, notification} from 'antd'
 import {AddressIn, signIn, getUser, getAddress, getProducts} from "../../API/API";
 import {withRouter} from 'react-router-dom'
 import {Link} from "react-router-dom";
-import { Carousel } from 'antd';
+import {Carousel} from 'antd';
+import BlackCart from "../BlackCart/BlackCart";
 import ProductCart from "../ProductCart/ProductCart";
+import BlackButton from "../BlackButton/BlackButton";
+
 function Products() {
     const [products, setProducts] = useState([]);
     const [page, setPage] = useState(0);
     const [isFetching, setIsFetching] = useState(false);
     const [canLoadMore, setCanLoadMore] = useState('can');
+
 
     const fetchProducts = async () => {
         try {
@@ -24,6 +28,7 @@ function Products() {
             setIsFetching(false)
         }
     };
+
     function onChange(a, b, c) {
         console.log(a, b, c);
     }
@@ -51,8 +56,8 @@ function Products() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    return (
 
+    return (
         <Row>
             <Col span={4}>
                 Filter
@@ -65,6 +70,7 @@ function Products() {
                                 return (
                                     <Col span={6}>
                                         <ProductCart product={product}/>
+
                                     </Col>
 
                                 )
@@ -75,9 +81,9 @@ function Products() {
             </Col>
 
 
-        </Row>)
+        </Row>
+    )
 }
-
 
 export default Products;
 

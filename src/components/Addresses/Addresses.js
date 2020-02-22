@@ -35,7 +35,6 @@ function  Addresses({history}) {
             try {
                 notification.success({message:"address append"})
                 res = await AddressIn(data);
-
                 history.push('/userdata');
             } catch (e) {
                 alert("bffh")

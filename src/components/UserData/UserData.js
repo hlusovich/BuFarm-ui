@@ -15,10 +15,8 @@ function UserData({history}) {
                 setAddress(addresses)
             } catch (e) {
                 console.log('ошибка')
-
             }
         };
-
         fetchAddress();
     }, [])
     console.log("addresses")

@@ -14,7 +14,6 @@ import LoginPage from "./components/LoginPage/LoginPage";
 import Users from "./components/Users/Users";
 import MainPage from "./components/MainPage/MainPage";
 import Addresses from "./components/Addresses/Addresses"
-import Addresse from "./components/Addresses/add"
 import UserData from "./components/UserData/UserData";
 import Products from "./components/Products/Products";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
@@ -27,6 +26,8 @@ import Training from "./components/training/training";
 import {Trainnn} from "./context/context2";
 import {verifyToken} from "./API/API";
 import BlackButton from "./components/BlackButton/BlackButton";
+import Tryf from "./components/Tryf/Try"
+import Cart from "./components/Cart/Cart";
 
 function App() {
     const {isAuthenticated, setIsAuthenticated} = useAuthentication();
@@ -76,8 +77,8 @@ function App() {
                                 <Products/>
                             </Route>
                             <Route path="/main-page">
-                            <MainPage/>
-                        </Route>
+                                <MainPage/>
+                            </Route>
                             <Route path="/users">
                                 <Users/>
                             </Route>
@@ -88,10 +89,12 @@ function App() {
                                 <div>никита лох</div>
                             </Route>
                             <Route path="/nikita-molodec">
-                                <div>никита молодец</div>
+                                <Tryf/>
                             </Route>
                             <Route path="/nikita-sosal-konec">
-                                <div>никита сосал конец</div>
+                            </Route>
+                            <Route path="/cart">
+                                <Cart/>
                             </Route>
                         </Switch>
                     </div>

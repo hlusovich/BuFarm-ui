@@ -12,6 +12,40 @@ export const signIn = async (body) => {
 
 };
 
+export const OrderProductIn = async (body) => {
+    const response = await fetch(`${API_URL}orderedproduct/`, {
+        method: "POST",
+        headers: {
+            'Content-Type': `application/json`,
+            'Authorization': `JWT ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(body),
+    });
+    return await processResponse(response)
+
+}
+export const GetOrdet = async () => {
+    const response = await fetch(`${API_URL}orderedproduct/`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('token')}`
+        },
+    });
+    return await processResponse(response);
+};
+export const CreateOrder = async (body) => {
+    const response = await fetch(
+        `${API_URL}order/`, {
+            method: "POST",
+            headers: {'Content-Type': `application/json`,
+                'Authorization': `JWT ${localStorage.getItem('token')}`},
+            body: JSON.stringify(body),
+        });
+    return await processResponse(response)
+
+}
+
 
 export const UserIn = async (body) => {
 
@@ -29,7 +63,7 @@ export const UserIn = async (body) => {
 };
 
 export const AddressIn = async (body) => {
-    const response= await fetch(`${API_URL}addresses/`, {
+    const response = await fetch(`${API_URL}addresses/`, {
         // method: 'GET', и слать токкен
         method: 'POST',
         headers: {
@@ -43,7 +77,7 @@ export const AddressIn = async (body) => {
     return await processResponse(response);
 };
 export const verifyToken = async (body) => {
-    const response= await fetch(`${API_URL}api-token-verify/`, {
+    const response = await fetch(`${API_URL}api-token-verify/`, {
 
         method: 'POST',
         headers: {
@@ -82,8 +116,6 @@ export const getAddress = async () => {
 };
 
 
-
-
 export const getProductDetails = async (id) => {
     const response = await fetch(`${API_URL}product/${id}`, {
         method: 'GET',
@@ -103,8 +135,6 @@ export const getProducts = async (page) => {
     });
     return await processResponse(response);
 };
-
-
 
 
 export const processResponse = async (response) => {
