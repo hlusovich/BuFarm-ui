@@ -8,13 +8,12 @@ import {
 
 function PrivateRoute ({ component: Component, ...rest }) {
     const {isAuthenticated} = useAuthentication();
-    console.log('2')
     return (
         <Route {...rest} render={(props) => (
             isAuthenticated
                 ? <Component {...props} />
                 : <Redirect to={{
-                    pathname: '/grabarloh',
+                    pathname: './',
                     state: { from: props.location }
                 }} />
         )} />

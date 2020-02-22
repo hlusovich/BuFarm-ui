@@ -1,6 +1,7 @@
-import React, {useEffect, useState} from 'react';
-import logo from './assets/images/logo.svg';
+import logo from './logo.svg';
+import './App.css';
 import 'antd/dist/antd.css';
+import React, {useEffect, useState} from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -8,32 +9,26 @@ import {
     Link,
     Redirect,
 } from "react-router-dom";
-import './App.css';
-import Header from "./components/Header/Header";
-import LoginPage from "./components/LoginPage/LoginPage";
-import Users from "./components/Users/Users";
-import MainPage from "./components/MainPage/MainPage";
-import Addresses from "./components/Addresses/Addresses"
-import UserData from "./components/UserData/UserData";
-import Products from "./components/Products/Products";
-import ProductDetails from "./components/ProductDetails/ProductDetails";
-import {ThemeContext, ThemeProvider} from "./context/theme";
-import {useAuthentication} from "./context/authentication";
-import {CartProvider} from "./context/cart";
-import PrivateRoute from "./components/AuthenticatedRoute/AuthenticatedRoute";
-import {Spin} from 'antd';
-import Training from "./components/training/training";
-import {Trainnn} from "./context/context2";
+import {useAuthentication, headerStatus, setHeaderStatus} from "./context/authentication";
 import {verifyToken} from "./API/API";
-import BlackButton from "./components/BlackButton/BlackButton";
-import Tryf from "./components/Tryf/Try"
-import Cart from "./components/Cart/Cart";
+import {Spin} from 'antd';
+import PrivateRoute from "./components/AuthenticatedRoute/AuthenticatedRoute";
+import LoginPage from "./components/LoginPage/LoginPage";
+import Header from "./components/Header/Header";
+import Addresses from "./components/Adresses/Addresses";
+import Users from "./components/Users/Users";
+import UserData from "./components/UserData/UserData";
+import Footer from "./components/Footer/Footer";
+import Main from "./components/Main/Main";
 
 function App() {
-    const {isAuthenticated, setIsAuthenticated} = useAuthentication();
-    const [isCheckValidation, setIsCheckValidation] = useState(false)
+    const {
+        isAuthenticated, setIsAuthenticated, headerStatus,
+        setHeaderStatus
+    } = useAuthentication();
+    const [isCheckValidation, setIsCheckValidation] = useState(false);
+
     useEffect(() => {
-            console.log('1')
             const checkToken = async () => {
                 if (localStorage.getItem('token')) {
                     try {
@@ -43,70 +38,52 @@ function App() {
                         if (res) {
                             setIsAuthenticated(true)
                         }
-
                     } catch (e) {
-                        console.log('e')
-                        localStorage.removeItem('token')
                     }
-
                 }
                 setIsCheckValidation(true)
             }
             checkToken()
         }
     )
+    useEffect(() => {
+            const wievHeader = () => {
+                if (window.location.href == "http://localhost:3000/loginpage") {
+                    setHeaderStatus(false)
+                } else {
+                    setHeaderStatus(true)
+                }
+
+            }
+            wievHeader()
+        }, []
+    )
+
 
     if (isCheckValidation) {
-        return (
-
-            <CartProvider>
-                <Router>
-                    <div>
-                        <Header text={'sdfsdf'}/>
-
-
-                        <Switch>
-                            <PrivateRoute path='/userdata' component={UserData}/>
-                            <Route path="/addresses">
-                                <Addresses/>
-                            </Route>
-                            <Route path="/products/:id">
-                                <ProductDetails/>
-                            </Route>
-                            <Route path="/products">
-                                <Products/>
-                            </Route>
-                            <Route path="/main-page">
-                                <MainPage/>
-                            </Route>
-                            <Route path="/users">
-                                <Users/>
-                            </Route>
-                            <Route path="/grabarloh">
-                                <LoginPage/>
-                            </Route>
-                            <Route path="/nikita-loh">
-                                <div>никита лох</div>
-                            </Route>
-                            <Route path="/nikita-molodec">
-                                <Tryf/>
-                            </Route>
-                            <Route path="/nikita-sosal-konec">
-                            </Route>
-                            <Route path="/cart">
-                                <Cart/>
-                            </Route>
-                        </Switch>
-                    </div>
-                </Router>
-            </CartProvider>
-        );
+        return (<Router>
+                {headerStatus && <Header/>}
+                <Route path={"/main"}><Main/></Route>
+                <Route path={"/loginpage"}>
+                    <LoginPage/>
+                </Route>
+                <Route path={"/addresses"}>
+                    <Addresses/>
+                </Route>
+                <Route path={"/users"}>
+                    <Users/>
+                </Route>
+                <Route path={"/userdata"}>
+                    <UserData/>
+                </Route>
+                {headerStatus && <Footer/>}
+            </Router>
+        )
     } else {
         return (
             <Spin className='center-absolute' size="large"></Spin>
         )
     }
-
 
 }
 

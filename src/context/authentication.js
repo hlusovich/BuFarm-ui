@@ -1,15 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 const AuthenticationContext = React.createContext(null);
 
 function AuthenticationProvider(props) {
     const [isAuthenticated, setIsAuthenticated] = React.useState( false);
+    const [headerStatus,setHeaderStatus]=useState(window.location.href)
+    function logOut(){
+        localStorage.removeItem('token');
+        setIsAuthenticated(localStorage.getItem("token"))
+    }
 
     return (
         <AuthenticationContext.Provider
             value={{
                 isAuthenticated,
-                setIsAuthenticated
+                setIsAuthenticated,
+                logOut,
+                headerStatus,
+                setHeaderStatus
             }}
             {...props}
         />

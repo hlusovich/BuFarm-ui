@@ -1,139 +1,162 @@
 import React, {useState, useEffect} from 'react';
 import {Form, Icon, Input, Button, Checkbox, Row, Col, notification} from 'antd';
 import {signIn, UserIn} from "../../API/API";
-import  {withRouter} from  "react-router-dom"
+import {Link, withRouter} from "react-router-dom"
+import  {useAuthentication,headerStatus,setHeaderStatus} from "../../context/authentication";
+import logo from "../../assets/images/cover.png";
+
 function Users({history}) {
+    const { isAuthenticated,setIsAuthenticated,headerStatus,setHeaderStatus}=useAuthentication()
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [first_name, setFirst_name] = useState('')
     const [last_name, setLast_name] = useState('')
     const [info, setInfo] = useState('')
-    const [passwordAgain,setPassworAgain]=useState('')
+    const [passwordAgain, setPassworAgain] = useState('')
+    const [buttomStatus,setButtomStatus] = useState(true)
     const changePassword = (event) => {
         setPassword(event.target.value)
     };
     const changeUsername = (event) => {
         setUsername(event.target.value)
-    };const changeFirst_name = (event) => {
+    };
+    const changeFirst_name = (event) => {
         setFirst_name(event.target.value)
-    };const changeLast_name = (event) => {
+    };
+    const changeLast_name = (event) => {
         setLast_name(event.target.value)
-    };const changeInfo = (event) => {
+    };
+    const changeInfo = (event) => {
         setInfo(event.target.value)
     };
-    const changePasswordAgain = (event)=>
+    const changePasswordAgain = (event) =>
         setPassworAgain(event.target.value)
     const handleSubmit = async event => {
         event.preventDefault();
-        if(password===passwordAgain){
-
-        if(password.length>5){
-        if(validateEmail(username)){
-        const data = {
-            username: username,
-            password: password,
-            first_name: first_name,
-            last_name:last_name,
-            info:info
-        }
-        let res= null;
-        try{
-            res = await UserIn(data)
-
-                localStorage['token'] = res.token;
-
-
-
-            history.push('/addresses');
-        } catch (e) {
-            alert("пидор")
-
-            console.log('mamku ebal error',  e)
-        }}
-        else {
-            notification.error({
-                    message: 'в поле  users  введите email оно валидированно'
-                })
+        if (password === passwordAgain) {
+            if (password.length > 5) {
+                if (validateEmail(username)) {
+                    const data = {
+                        email: username,
+                        password: password,
+                        first_name: first_name,
+                        last_name: last_name,
+                        info: info
+                    }
+                    let res = null;
+                    try {
+                        setButtomStatus(false)
+                        res = await UserIn(data)
+                        setIsAuthenticated(true);
+                        const data2 = {
+                            username: username,
+                            password: password,}
+                            notification.success({message:"поздравляем вы зарегестрированы"})
+                            const token = await signIn(data2)
+                        setButtomStatus(true)
+                            localStorage.setItem('token', token.token);
+                            history.push('/addresses');}
+                     catch (e) {
+                        console.log('UserIn', e)
+                    }
+                } else {
+                    notification.error({
+                        message: 'в поле  users  введите email оно валидированно'
+                    })
+                }
+            } else {
+                notification.error({message: "пароль должен быть более пяти знаков "})
             }
-
+        } else {
+            notification.error({message: "пароли не совпадают "})
         }
-    else{
-        notification.error({message:"пароль более 5 знаков чмо"})
-        }}
-    else{notification.error({message:"пароли не совпадают петушок"})}};
-
-
-
+    };
     const validateEmail = (email) => {
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email.toLowerCase());
     }
+    useEffect(() => {
+            const wievHeader = () => {
+                if (window.location.href == "http://localhost:3000/loginpage" || window.location.href == "http://localhost:3000/addresses" || window.location.href == "http://localhost:3000/users") {
+                    setHeaderStatus(false)
+                }
+                else {
+                    setHeaderStatus(true)
+                }
+
+            }
+            wievHeader()
+        }
+    )
     return (
-        <Row>
-            <Col span={6} offset = {9}>
+        <div className={"login-style"}>
+            <Row>
                 <Form onSubmit={handleSubmit}>
-                    <Form.Item>
+                    <Col>
+                        <Link to={"/loginpage"}><img src={logo} className={"logoforlogin"} /></Link>
+                        <h1 className={"zagolovok"}>Введите данные для регистрации</h1>
+                        <div className={"greenline"}>
+                        </div>
+                        <Input required={true}
+                               prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                               placeholder="Введите email"
+                               name="username"
+                               onChange={changeUsername}
+                               className={"login-input"}
+                               size={"large"}
+                        />
+                        <Input required={true}
+                               prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                               type="password"
+                               placeholder="Пароль"
+                               name="password"
+                               onChange={changePassword}
+                               className={"login-input"}
 
-                        <Input required={true}
-                            prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                            placeholder="Username"
-                             name="username"
-                            onChange={changeUsername}
                         />
-                    </Form.Item>
-                    <Form.Item>
                         <Input required={true}
-                            prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            onChange={changePassword}
-                               //minLength={5}
+                               prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                               type="password"
+                               placeholder="Повторите пароль"
+                               name="password"
+                               onChange={changePasswordAgain}
+                               size={"large"}
+                               className={"login-input"}
                         />
-                    </Form.Item> <Form.Item>
-                        <Input required={true}
-                            prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                            type="password"
-                            placeholder="Password again"
-                            name="password"
-                            onChange={changePasswordAgain}
-                               //minLength={5}
-                        />
-                    </Form.Item><Form.Item>
                         <Input
-                            prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
-
-                            placeholder="First_name"
+                            prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                            className={"login-input"}
+                            placeholder="Имя"
                             name="first_name"
                             onChange={changeFirst_name}
+                            size={"large"}
                         />
-                    </Form.Item><Form.Item>
-                        <Input
-                            prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
 
-                            placeholder="Last_name"
+                        <Input
+                            prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                            size={"large"}
+                            placeholder="Фамилия"
                             name="last_name"
                             onChange={changeLast_name}
+                            className={"login-input"}
                         />
-                    </Form.Item><Form.Item>
-                        <Input
-                            prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
 
-                            placeholder="Info"
+                        <Input
+                            prefix={<Icon type="" style={{color: 'rgba(0,0,0,.25)'}}/>}
+                            placeholder="Информация(не обязательно)"
                             name="info"
                             onChange={changeInfo}
+                            size={"large"}
+                            className={"login-input"}
                         />
-                    </Form.Item>
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit" className="login-form-button">
-                            Log in
+                        <Button disabled={!buttomStatus} type="primary" htmlType="submit" className={"greenbuttom"} size={"large"}>
+                            Зарегестрироваться
                         </Button>
-                    </Form.Item>
+                    </Col>
                 </Form>
-            </Col>
-        </Row>
+            </Row>
+        </div>
     )
 }
 
-
-export default withRouter(Users);
+export default withRouter(Users)

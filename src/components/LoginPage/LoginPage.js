@@ -2,84 +2,89 @@ import React, {useState, useEffect} from 'react';
 import {Form, Icon, Input, Button, Checkbox, Row, Col, notification} from 'antd';
 import {signIn} from "../../API/API";
 import {withRouter} from 'react-router-dom'
-import {useAuthentication} from "../../context/authentication";
+import {Link} from "react-router-dom";
+import header from '../../assets/images/header (3).png'
+import logo from "../../assets/images/cover.png";
+import {useAuthentication,headerStatus,setHeaderStatus} from "../../context/authentication";
 
 function LoginPage({history}) {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const {setIsAuthenticated} = useAuthentication();
-    const changePassword = (event) => {
-        setPassword(event.target.value)
-    };
-    const changeUsername = (event) => {
-        setUsername(event.target.value)
-    };
-
-    const handleSubmit = async event => {
-        event.preventDefault();
-        if (validateEmail(username)) {
-            const data = {
-                username: username,
-                password: password,
-            }
-
-            let res = null;
-            try {
-                res = await signIn(data);
-                localStorage.setItem('token', res.token);
-                // fakeAuth.authenticate();
-                setIsAuthenticated(true);
-                console.log(localStorage.getItem('token'))
-                history.push('/userdata');
-            } catch (e) {
-                console.log('mamku ebal error', e)
-            }
-        } else {
-            notification.error({
-                message: 'Notification Title'
-            })
-        }
-    };
-
+    const [username, setUsername] = useState(null)
+    const [login, setLogin] = useState(null)
+    const {setIsAuthenticated,headerStatus,setHeaderStatus} = useAuthentication()
     const validateEmail = (email) => {
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email.toLowerCase());
     }
+    const changeUsername = (event) => {
+        setUsername(event.target.value)
+    }
+    const changeLogin = (event) => {
+        setLogin(event.target.value)
+    }
 
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        const data = {
+            username: username,
+            password: login,
+        }
+        try {
+            const token = await signIn(data)
+            localStorage.setItem('token', token.token);
+            setIsAuthenticated(true);
+            history.push('/main');
+        } catch (e) {
+            console.log(e.name + "signIn")
+            notification.error({message: "Пользователь с данными логином и паролем не зарегестрирован"})
+        }
+    }
+    useEffect(() => {
+            const wievHeader = () => {
+                if (window.location.href == "http://localhost:3000/loginpage" || window.location.href == "http://localhost:3000/addresses" || window.location.href == "http://localhost:3000/users") {
+                    setHeaderStatus(false)
+                }
+                else {
+                    setHeaderStatus(true) }
 
+            }
+            wievHeader()
+        },[]
+    )
     return (
-        <Row>
-            <Col span={6} offset={9}>
+        <div className={"login-style"}>
+            <Row>
                 <Form onSubmit={handleSubmit}>
-                    <Form.Item>
-
+                    <Col>
+                        <Link to={"/loginpage"}><img src={logo} className={"logoforlogin"} /></Link>
+                        <h1 className={"zagolovok"}>Введите ваше имя и пароль</h1>
+                        <div className={"greenline"}></div>
                         <Input
                             prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                            placeholder="Username"
+                            placeholder="Введите имя"
                             name="username"
                             onChange={changeUsername}
+                            size={"large"}
+                            className={"login-input"}
                         />
-                    </Form.Item>
-                    <Form.Item>
                         <Input
                             prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                            type="password"
-                            placeholder="Password"
-                            name="password"
-                            onChange={changePassword}
-                            minLength={5}
+                            placeholder="Введите пароль"
+                            name="username"
+                            onChange={changeLogin}
+                            size={"large"}
+                            className={"login-input"}
+                            type={"password"}
                         />
-                    </Form.Item>
-                    <Form.Item>
-                        <Button disabled={!username || !password} type="primary" htmlType="submit"
-                                className="login-form-button">
-                            Log in
-                        </Button>
-                    </Form.Item>
+
+                        <Button className={"greenbuttom"} size={"large"} htmlType="submit">Войти</Button>
+                        <Link to={"/users"}>
+                            <div className={"text-registracia"}>нет акаунта?</div>
+                        </Link>
+                    </Col>
                 </Form>
-            </Col>
-        </Row>
+            </Row>
+        </div>
     )
 }
 
-export default withRouter(LoginPage);
+export default withRouter(LoginPage)
