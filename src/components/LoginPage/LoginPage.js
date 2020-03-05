@@ -5,12 +5,12 @@ import {withRouter} from 'react-router-dom'
 import {Link} from "react-router-dom";
 import header from '../../assets/images/header (3).png'
 import logo from "../../assets/images/cover.png";
-import {useAuthentication,headerStatus,setHeaderStatus} from "../../context/authentication";
+import {useAuthentication, headerStatus, setHeaderStatus} from "../../context/authentication";
 
 function LoginPage({history}) {
     const [username, setUsername] = useState(null)
     const [login, setLogin] = useState(null)
-    const {setIsAuthenticated,headerStatus,setHeaderStatus} = useAuthentication()
+    const {setIsAuthenticated, headerStatus, setHeaderStatus, mainStatus, setMainStatus} = useAuthentication()
     const validateEmail = (email) => {
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email.toLowerCase());
@@ -32,7 +32,7 @@ function LoginPage({history}) {
             const token = await signIn(data)
             localStorage.setItem('token', token.token);
             setIsAuthenticated(true);
-            history.push('/main');
+            history.push('main/');
         } catch (e) {
             console.log(e.name + "signIn")
             notification.error({message: "Пользователь с данными логином и паролем не зарегестрирован"})
@@ -40,22 +40,29 @@ function LoginPage({history}) {
     }
     useEffect(() => {
             const wievHeader = () => {
-                if (window.location.href == "http://localhost:3000/loginpage" || window.location.href == "http://localhost:3000/addresses" || window.location.href == "http://localhost:3000/users") {
+                if (window.location.href == "http://localhost:3002/loginpage" || window.location.href == "http://localhost:3002/addresses" || window.location.href == "http://localhost:3002/users") {
                     setHeaderStatus(false)
+                } else {
+                    setHeaderStatus(true)
+                    console.log("да2")
                 }
-                else {
-                    setHeaderStatus(true) }
+                setMainStatus(false)
 
             }
             wievHeader()
-        },[]
+        }, []
+    )
+    useEffect(() => {
+            setHeaderStatus(false)
+
+        }, []
     )
     return (
         <div className={"login-style"}>
             <Row>
                 <Form onSubmit={handleSubmit}>
                     <Col>
-                        <Link to={"/loginpage"}><img src={logo} className={"logoforlogin"} /></Link>
+                        <Link to={"/loginpage"}><img src={logo} className={"logoforlogin"}/></Link>
                         <h1 className={"zagolovok"}>Введите ваше имя и пароль</h1>
                         <div className={"greenline"}></div>
                         <Input

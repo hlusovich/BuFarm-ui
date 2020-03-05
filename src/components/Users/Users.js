@@ -152,6 +152,7 @@ function Users({history}) {
                         <Button disabled={!buttomStatus} type="primary" htmlType="submit" className={"greenbuttom"} size={"large"}>
                             Зарегестрироваться
                         </Button>
+                        <Link to={"loginpage"}> <h3 className={"text-registracia"}>Уже есть аккаунт?</h3></Link>
                     </Col>
                 </Form>
             </Row>

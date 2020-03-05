@@ -15,10 +15,14 @@ import {Link} from "react-router-dom";
 import BlackButton from "../BlackButton/BlackButton";
 import {useAuthentication, headerStatus, setHeaderStatus} from "../../context/authentication";
 import logo from "../../assets/images/cover.png";
-
+import ChangeAddresses from "../ChangeAddresses/ChangeAddresses";
+import header from "../../assets/images/header (3).png";
+import AddAddress from "../AddAddress/AddAddress";
 
 function UserData({history}) {
-    const {isAuthenticated, setIsAuthenticated, headerStatus, setHeaderStatus} = useAuthentication()
+
+
+    const {isAuthenticated, setIsAuthenticated, headerStatus, setHeaderStatus, addressChange, editButtom, setEditButtom, setMainStatus, mainStatus} = useAuthentication()
     const [user, setUser] = useState();
     const [addresses, setAddress] = useState([]);
     const [edit, setEdit] = useState(false)
@@ -34,30 +38,16 @@ function UserData({history}) {
     const [addressState, setAddressState] = useState("")
     const [addresListWiev, setAddresListWiev] = useState(false)
 
-    const [addCity, setAddCity] = useState('')
-    const [addBuilding, setAddBuilding] = useState('')
-    const [addFlat, setAddFlat] = useState("")
-    const [addStreet, setAddStreet] = useState("")
-    const[addresChangeListWiev,setAddresChangeListWiev] = useState("")
-    const[addressState2,setAddressState2]=useState("")
+
+    const [addresChangeListWiev, setAddresChangeListWiev] = useState("")
+    const [addressState2, setAddressState2] = useState("")
     const changeCity = event => {
         setCity(event.target.value)
     }
     const changeBuilding = event => {
         setBuilding(event.target.value)
     }
-    const changeAddFlat = event => {
-        setAddFlat(event.target.value)
-    }
-    const changeAddStreet = event => {
-        setAddStreet(event.target.value)
-    }
-    const changeAddCity = event => {
-        setAddCity(event.target.value)
-    }
-    const changeAddBuilding = event => {
-        setAddBuilding(event.target.value)
-    }
+
     const changeFlat = event => {
         setFlat(event.target.value)
     }
@@ -65,33 +55,32 @@ function UserData({history}) {
         setStreet(event.target.value)
     }
     const addAddressButtom = () => {
-        if(addressState2){
-        setAddressState2(false)}
-            setAddresListWiev(true)
-
-        if (addressState) {
-            setAddressState(false)
-        } else {
-            setAddressState(true)
+        if (addressState2) {
+            setAddressState2(false)
         }
+        setAddresListWiev(true)
+
+
+        setAddressState(!addressState)
+
     }
 
-    const changeEditAddress = async (id,city,street,building,flat) => {
+    const changeEditAddress = async (id, city, street, building, flat) => {
+
+        setEditButtom(!editButtom)
         setCity(city)
         setBuilding(building)
         setStreet(street)
         setFlat(flat)
         setAddressId(id)
-            if(!addresChangeListWiev){
-        setAddresChangeListWiev(true)}
-        if (!addressState2) {
-            setAddressState2(true)
-        } else {
-            setAddressState2(false)
+        if (!addresChangeListWiev) {
+            setAddresChangeListWiev(true)
         }
-        if (addressState) {
-            setAddressState(false)
-    }}
+        setAddresListWiev(false)
+
+
+        setAddressState(!addressState)
+    }
 
     const changeData = async () => {
         if (validateEmail(email)) {
@@ -105,7 +94,8 @@ function UserData({history}) {
                 res = await patchUserData(data, user.id)
             } catch (e) {
                 console.log(e + "patchUserData")
-            }setEdit(false)
+            }
+            setEdit(false)
         } else {
             notification.error({message: "проверьте email"})
         }
@@ -162,7 +152,8 @@ function UserData({history}) {
             }
         };
         fetchAddress();
-    }, [])
+
+    }, [addressChange])
     useEffect(() => {
         const fetchUser = async () => {
             try {
@@ -192,13 +183,7 @@ function UserData({history}) {
     }
     useEffect(() => {
             const wievHeader = () => {
-                if (window.location.href == "http://localhost:3000/loginpage" || window.location.href == "http://localhost:3000/addresses" || window.location.href == "http://localhost:3000/users") {
-                    setHeaderStatus(false)
-                } else {
-                    setHeaderStatus(true)
-                    console.log("да2")
-                }
-
+                setHeaderStatus(true)
             }
             wievHeader()
         }, []
@@ -207,112 +192,68 @@ function UserData({history}) {
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email.toLowerCase());
     }
-    const handleSubmitAddAddress = async (event) => {
-        event.preventDefault()
-        if (addFlat) {
-            const data = {
-                city: addCity,
-                street: addStreet,
-                building: addBuilding,
-                flat: addFlat,
-            }
-            try {
-                const response = await AddressIn(data)
-                const addresses = await getAddress();
-                setAddress(addresses)
 
-            } catch (e) {
-                console.log(e.name + "AddressIn")
-
-            }
-        } else {
-            const data = {
-                city: addCity,
-                street: addStreet,
-                building: addBuilding,
-                flat: "нет",
-            }
-            try {
-                const response = await AddressIn(data)
-                const addresses = await getAddress();
-                setAddress(addresses)
-
-            } catch (e) {
-                console.log(e.name + "AddressIn")
-
-            }
+    const editAddressList = async () => {
+        const data = {
+            city: city,
+            street: street,
+            building: building,
+            flat: flat
         }
+        try {
+            const response = await patchUserAddress(data, addressId)
+            const addresses = await getAddress();
+            setAddress(addresses)
 
-        setAddressState(false)
-        setAddCity("")
-        setAddFlat("")
-        setAddStreet("")
-        setAddBuilding("")
-
+        } catch (e) {
+            console.log(e.name + "AddressPatch")
+        }
+        setEditAddress(false)
+        setAddressState2(false)
     }
-    const editAddressList=async()=>{
-            const data = {
-                city: city,
-                street: street,
-                building: building,
-                flat: flat
-            }
-            try {
-                const response = await patchUserAddress(data, addressId)
-                const addresses = await getAddress();
-                setAddress(addresses)
 
-            } catch (e) {
-                console.log(e.name + "AddressPatch")
-            }
-            setEditAddress(false)
-            setAddressState2(false)
-        }
-        const changeAddresState=()=>{
-        if(addressState){
-            setAddressState(false)
-        }
-    }
-    const preventEvent=(event)=>{
+    const preventEvent = (event) => {
         event.stopPropagation()
     }
-    const changeAddresState2=()=>{
-        if(addressState2){
+    const changeAddresState2 = () => {
+        if (addressState2) {
             setAddressState2(false)
         }
     }
-
-
-
 
 
     return (
-        <div >
-        <>
-        <div className={"userdata"}>
-            <Row>
 
-                <Col offset={2}>
+        <div><img src={header} className={'headerimage'}/>
+            <>
+                <div className={"userdata"}>
+                    <Row>
 
-                    <div className={"nowrap"}><h1 className={"zagolovok2"}>Ваши персональные данные:{!edit ?
-                        <Button icon="edit" onClick={() => changeEdit()}>Редактировать</Button> : <><Button icon="edit"
-                                                                                                            onClick={() => canceledButtom()}>Отмена</Button>
-                            <Button icon="edit" onClick={() => changeData()}>Изменить данные</Button></>}</h1></div>
-                    {user && (<ul>
-                            <p className={"text-user2"}>Email</p>
-                            <li><Input disabled={!edit} className={!edit ? "inputstyle" : "inputstyle2"}
-                                       onChange={changeEmail} value={email}/></li>
-                            <a className={"greenline3"}></a>
-                            <p className={"text-user2"}>Имя</p>
-                            <li><Input className={!edit ? "inputstyle" : "inputstyle2"} onChange={changeFirstName}
-                                       disabled={!edit} value={firstName}/></li>
-                            <a className={"greenline3"}></a>
-                            <p className={"text-user2"}>Фамилия</p>
-                            <li><Input className={!edit ? "inputstyle" : "inputstyle2"} onChange={changeFamilyName}
-                                       disabled={!edit} value={familyName}/></li>
-                            <a className={"greenline3"}></a>
-                            <li><h2 className={"text-user2"}>Список ваших адресcов</h2>
-                                <ul>
+                        <Col offset={2}>
+
+                            <div className={"nowrap"}><h1 className={"zagolovok2"}>Ваши персональные данные:{!edit ?
+                                <Button icon="edit" onClick={() => changeEdit()}>Редактировать</Button> : <><Button
+                                    icon="edit"
+                                    onClick={() => canceledButtom()}>Отмена</Button>
+                                    <Button icon="edit" onClick={() => changeData()}>Изменить данные</Button></>}</h1>
+                            </div>
+                            {user && (<ul>
+                                    <p className={"text-user2"}>Email</p>
+                                    <li><Input disabled={!edit} className={!edit ? "inputstyle" : "inputstyle2"}
+                                               onChange={changeEmail} value={email}/></li>
+                                    <a className={"greenline3"}></a>
+                                    <p className={"text-user2"}>Имя</p>
+                                    <li><Input className={!edit ? "inputstyle" : "inputstyle2"}
+                                               onChange={changeFirstName}
+                                               disabled={!edit} value={firstName}/></li>
+                                    <a className={"greenline3"}></a>
+                                    <p className={"text-user2"}>Фамилия</p>
+                                    <li><Input className={!edit ? "inputstyle" : "inputstyle2"}
+                                               onChange={changeFamilyName}
+                                               disabled={!edit} value={familyName}/></li>
+                                    <a className={"greenline3"}></a>
+                                    <h2 className={"text-user2"}>Список ваших адресcов</h2>
+
                                     {addresses.map((item) => <div className={"nowrap"}><Button
                                         className={"margin"}
                                         type="danger"
@@ -320,132 +261,35 @@ function UserData({history}) {
                                         icon="close"
                                         onClick={() => delAddress(item.id)}/><Button
                                         className={"margin"} type="primary" shape="circle" icon="edit"
-                                        onClick={() => changeEditAddress(item.id,item.city,item.street,item.building,item.flat)}/>
-                                        <li className={"text-user"}><Input disabled={true}
-                                                                           className={"inputstyle-editadress"}
-                                                                           value={" город " + item.city + " улица " + item.street + " дом " + item.building + " квартира " + item.flat}/>
-                                        </li>
+                                        onClick={() => changeEditAddress(item.id, item.city, item.street, item.building, item.flat)}/>
+                                        <p className={"text-user"}><Input disabled={true}
+                                                                          className={"inputstyle-editadress"}
+                                                                          value={" город " + item.city + " улица " + item.street + " дом " + item.building + " квартира " + item.flat}/>
+                                        </p>
                                     </div>)}
+
+
+                                    < Button className="greenbuttom2" onClick={addAddressButtom}>
+                                        добавить адресс
+                                    </Button>
                                 </ul>
 
-                                {addresChangeListWiev && <div onClick={changeAddresState2} className={addressState2?"blur":"empty"}>< div onClick={preventEvent} className={!addressState2 ? "address-style2" : "address-style"}>
-                                    <Row>
+                            )
+                            }
 
-                                            <Col>
-                                                <Link to={"/loginpage"}><img src={logo}
-                                                                             className={"logoforlogin"}/></Link>
-                                                <h1 className={"zagolovok"}>измените ваш адресс</h1>
-                                                <div className={"greenline"}></div>
-                                                <Input
-                                                    prefix={<Icon type="text"
-                                                                  style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                                    placeholder="Введите город"
-                                                    name="username"
-                                                    onChange={changeCity}
-                                                    size={"large"}
-                                                    className={"login-input"}
-                                                    value={city}
-                                                />
-                                                <Input
-                                                    prefix={<Icon type="" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                                    placeholder="Введите улицу"
-                                                    name="username"
-                                                    onChange={changeStreet}
-                                                    size={"large"}
-                                                    className={"login-input"}
-                                                    value={street}
-                                                /><Input
-                                                prefix={<Icon type="" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                                placeholder="Введите номер дома"
-                                                name="username"
-                                                onChange={changeBuilding}
-                                                size={"large"}
-                                                className={"login-input"}
-                                                value={building}
-                                            /><Input
-                                                prefix={<Icon type="" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                                placeholder="Введите номер квартиры"
-                                                name="username"
-                                                onChange={changeFlat}
-                                                size={"large"}
-                                                className={"login-input"}
-                                                value={flat}
-                                            />
-
-                                                <Button disabled={!city || !street || !building}
-                                                        className={"greenbuttom"}
-                                                        size={"large"}
-                                                        onClick={editAddressList}>Изменить</Button>
-                                            </Col>
-
-                                    </Row>
-                                </div></div>}
-
-                                < Button className="greenbuttom2" onClick={addAddressButtom}>
-                                    добавить адресс
-                                </Button></li>
-                        </ul>
-
-                    )
-                    }
-
-                </Col>
-
-            </Row>
-            {addresListWiev && <div onClick={changeAddresState} className={addressState?"blur2":"empty"}> <div onClick={preventEvent} className={!addressState ? "address-style2" : "address-style"}>
-                <Row>
-                    <Form onSubmit={handleSubmitAddAddress}>
-                        <Col>
-                            <Link to={"/loginpage"}><img src={logo} className={"logoforlogin"}/></Link>
-                            <h1 className={"zagolovok"}>Введите ваш адресс</h1>
-                            <div className={"greenline"}></div>
-                            <Input
-                                prefix={<Icon type="text" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                placeholder="Введите город"
-                                name="username"
-                                onChange={changeAddCity}
-                                size={"large"}
-                                className={"login-input"}
-                                value={addCity}
-                            />
-                            <Input
-                                prefix={<Icon type="" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                                placeholder="Введите улицу"
-                                name="username"
-                                onChange={changeAddStreet}
-                                size={"large"}
-                                className={"login-input"}
-                                value={addStreet}
-                            /><Input
-                            prefix={<Icon type="" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                            placeholder="Введите номер дома"
-                            name="username"
-                            onChange={changeAddBuilding}
-                            size={"large"}
-                            className={"login-input"}
-                            value={addBuilding}
-                        /><Input
-                            prefix={<Icon type="" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                            placeholder="Введите номер квартиры"
-                            name="username"
-                            onChange={changeAddFlat}
-                            size={"large"}
-                            className={"login-input"}
-                            value={addFlat}
-                        />
-
-                            <Button disabled={!addCity || !addStreet || !addBuilding} className={"greenbuttom"}
-                                    size={"large"}
-                                    htmlType="submit">Добавить</Button>
                         </Col>
-                    </Form>
-                </Row>
-            </div></div>}
-            < /div>
 
-                        </>
+                    </Row>
+                    {addresChangeListWiev &&
+                    <ChangeAddresses id={addressId} city={city} building={building} flat={flat}
+                                     street={street}/>
+                    }
+                    {addresListWiev && <AddAddress addressState={addressState}/>}
+                    < /div>
 
-        </div>
+                    </>
+
+                </div>
 
 
                 )

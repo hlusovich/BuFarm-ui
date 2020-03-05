@@ -11,6 +11,16 @@ export const signIn = async (body) => {
     return await processResponse(response);
 
 };
+export const getProducts = async (page) => {
+    const response = await fetch(`${API_URL}product/?offset=${page}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+
+        },
+    });
+    return await processResponse(response);
+};
 
 export const orderProduct = async (body) => {
     const response = await fetch(`${API_URL}orderedproduct/`, {
@@ -24,6 +34,17 @@ export const orderProduct = async (body) => {
     return await processResponse(response)
 
 }
+
+export const getProductsDetails = async (id) => {
+    const response = await fetch(`${API_URL}product/${id}/`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    });
+    return await processResponse(response);
+};
+
 export const GetOrder = async () => {
     const response = await fetch(`${API_URL}orderedproduct/`, {
         method: 'GET',
@@ -151,16 +172,6 @@ export const getProductDetails = async (id) => {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
-        },
-    });
-    return await processResponse(response);
-};
-export const getProducts = async (page) => {
-    const response = await fetch(`${API_URL}product/?offset=${page}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-
         },
     });
     return await processResponse(response);
