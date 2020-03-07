@@ -7,6 +7,10 @@ import Buttman from "../../assets/images/196.png"
 import header from "../../assets/images/header (3).png";
 import BlackButton from "../BlackButton/BlackButton";
 import {Link} from "react-router-dom";
+<<<<<<< HEAD
+import BlackCart from "../BlackCart/BlackCart";
+=======
+>>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
 
 function Products() {
     const currentPosition = Math.round(window.pageYOffset + document.documentElement.offsetHeight);
@@ -15,7 +19,11 @@ function Products() {
     const [isFetching, setIsFetching] = useState(false);
     const [canLoadMore, setCanLoadMore] = useState('can');
     const {
+<<<<<<< HEAD
+        setHeaderStatus,setCartView,cartst,setCartst
+=======
         setHeaderStatus
+>>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
     } = useAuthentication();
 
     function init(initialCount) {
@@ -37,10 +45,17 @@ function Products() {
         }
     };
 
+<<<<<<< HEAD
+    useEffect(() => {
+        fetchProducts()
+        setCartView(false)
+        setCartst(false)
+=======
 
 
     useEffect(() => {
         fetchProducts()
+>>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
     }, []);
 
 
@@ -86,11 +101,19 @@ function Products() {
                             )
                         }
                     </Row>
+<<<<<<< HEAD
+                    <div className={"center"}> {canLoadMore&&<Button className={"more-products-buttom-style"} type={"primary"} onClick={pageButtom}>Посмотреть еще</Button>}</div>
+=======
                     {canLoadMore&&<Button className={"more-products-buttom-style"} type={"primary"} onClick={pageButtom}>Посмотреть еще</Button>}
+>>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
                 </Col>
 
 
             </Row>
+<<<<<<< HEAD
+            <BlackCart/>
+=======
+>>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
         </>
     )
 
