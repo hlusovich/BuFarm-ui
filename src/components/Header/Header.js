@@ -28,7 +28,7 @@ function Header({history}) {
                 {isAuthenticated&&< Col  offset = {1}span={1}> <Link to={"/userdata"} className={"textcolor"}>Ваши контакты</Link></Col>}
                 <Col offset={1} span={2}><Link to={'/userdata'}  ><a className={"textcolor"}>Мой заказ</a></Link></Col>
                 <Col offset={1}span={2}><Link to={"/products"} className={"textcolor"}>Продукты</Link></Col>
-            <Col offset={1}span={1}>О нас</Col>
+                <Col offset={1}span={1}><Link className={"textcolor"} to={"/aboutus"}>О нас</Link></Col>
                 {!isAuthenticated&&<Col offset={1}span={2} ><Link to={"/loginpage"}><a className={"textcolor"}>Log in</a></Link></Col>}
                 {isAuthenticated&&<Col offset={1}span={2} ><Link to={"/loginpage"}><a onClick={logOut} className={"textcolor"}>Log out</a></Link></Col>}
                 {!isAuthenticated&&<Col offset={1} ><Link to={"/users"}><a className={"textcolor"}>Регистрация</a></Link></Col>}

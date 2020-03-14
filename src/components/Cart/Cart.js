@@ -1,59 +1,49 @@
 import React, {useEffect, useState} from "react";
-import {useCart, CartContext} from "../../context/cart";
-import {Form, Icon, Input, Button, Checkbox, Row, Col, notification, image, flex, Radio,Select} from 'antd';
+import {useAuthentication} from "../../context/authentication";
+import {Col, Row, Menu,Button} from "antd";
 import Buttman from "../../assets/images/196.png";
-import BlackButton from "../BlackButton/BlackButton";
-import {AddressIn, signIn, getUser, getAddress} from "../../API/API";
-import {OrderProductIn, CreateOrder, GetOrdet} from "../../API/API";
-const { Option } = Select;
+import header from "../../assets/images/header (3).png";
+import {
+    getAddress, CreateOrder
+} from "../../API/API";
 
 function Cart() {
-    const [bool, setBool] = useState(true)
-    const {deleteProductFromCart, cart, updateProduct, test, updTest} = useCart()
-    const [addresses, setAddress] = useState([]);
-    const [city, setCity] = useState(null)
-    const fprInput = (event, item) => {
-        const value = event.target.value
-        item.count = value
-        updateProduct(item)
-    }
-
-    useEffect(() => {
-        const fetchAddress = async () => {
-            try {
-                const addresses = await getAddress();
-
-                setAddress(addresses)
-            } catch (e) {
-                console.log('ошибка')
-
-            }
-        };
-        fetchAddress();
-    }, [])
-
+    const {cart, setCart, deleteProductFromCart, setCartView, setCartst} = useAuthentication()
+    const [count, setCount] = useState(0)
+    const [total, setTotal] = useState(0)
+    const [render, setRender] = useState(false)
+    const [address, setAddress] = useState()
+    const [city, setCity] = useState("")
+    const[menust,setMenust]=useState(false)
     const chooseCity = (value) => {
         setCity(value)
-        console.log(city)
     }
 
+    const incrementCount = (id) => {
+        let count = cart.find(item => item.id == id)
+        count.count += 1
+        console.log(cart)
+        setRender(!render)
+
+    }
     const handle = async (event) => {
         event.preventDefault()
         let arrayOrdereProducts = []
 
         function createOrederedProducts(item) {
-            const count = Number(item.count)
+            const count = +item.count
             const orderedProductData = {
                 product_id: item.product.id,
                 count: count,
             }
             return orderedProductData
         }
+
         cart.map(item => {
             arrayOrdereProducts.push(createOrederedProducts(item))
         })
         const orderData = {
-            ordered_products:arrayOrdereProducts,
+            ordered_products: arrayOrdereProducts,
             address_id: city,
         }
 
@@ -64,77 +54,88 @@ function Cart() {
         }
 
     }
-    return (
-        <div>
-            <h1>Корзина с продуктами</h1>
-            <h3 className={"rightzagolovok"}>это аш 3 заголовок</h3>
-            <h5>второй заголовок вообще не вкурсе зачем </h5>
-            <Row align="middle" type="flex">
-                <Col offset={2} span={4}>
-                    <div className={"round3"}>
-                        Изоображение
-                    </div>
-                </Col>
-                < Col span={3}>
-                    <div className={"round3"}>
-                        Имя продукта
-                    </div>
-                </Col>
-                < Col span={3}>
-                    <div className={"round3"}>
-                        Количество
-                    </div>
-                </Col>
-                < Col span={6}>
-                    <div className={"round3"}>
-                        цена продукта
-                    </div>
-                </Col>
-                <Col offset={1} span={3}>
-                </Col>
-            </Row>
-            <div className={"black-line2"}>
-            </div>
+    const decrementCount = (id) => {
+        let count = cart.find(item => item.id == id)
+        if (count.count > 0) {
+            count.count -= 1
+            setRender(!render)
+        }
+    }
+    useEffect(() => {
+        setCartView(false)
+        setCartst(false)
+        const fetchAddress = async () => {
+            try {
+                const addresses = await getAddress();
+                setAddress(addresses)
+            } catch (e) {
+                console.log('ошибка')
 
-            {cart.map(item =>
-                <Row align="middle" type="flex">
-                    <Col offset={2} span={4}>
-                        <div>
-                            <img src={item.product.images.length ? item.product.images[0].url : Buttman}
-                                 className={"photocart2"}/>
+            }
+        };
+        fetchAddress();
+    }, [])
+    const changeMenuStyle = ()=>{
+        setMenust(true)
+        console.log(menust)
+    }
+    useEffect(() => {
+            setCart([].concat(cart))
+            let bill = cart.reduce((prev, current) => prev + current.price * current.count, 0)
+            setTotal(bill)
+        },
+        [render])
+    return (<div className={"white"}>
+        <img src={header} className={'headerimage'}/>
+        <h1><b>Ваша корзина</b></h1>
+        <Row><Col span={6} offset={1}></Col><Col span={4} offset={1}>Название</Col><Col span={8} offset={1}>
+            <div className={"center"}>Количество</div>
+        </Col></Row>
+        {cart.map((item) =>
+            <Row>
+                <div className={"cart-block"}>
+                    <Col span={6} offset={1}>
+                        <div><img src={item.images.length ? item.images[0].url : Buttman}
+                                  className={"image-cart"}/></div>
+                    </Col>
+                    <Col span={4} offset={1}>
+                        <div className={"cart-text"}>{item.name}</div>
+                    </Col>
+                    <Col span={8} offset={1}>
+                        <div className={"column"}>
+                            <div className={"center"}>
+                                <div className={"count-button-style"}
+                                     onClick={() => decrementCount(item.id)}>-
+                                </div>
+
+                                <div className={"cart-text"}>{(item.count) + " " + item.unit_type}</div>
+                                <div className={"count-button-style"}
+                                     onClick={() => incrementCount(item.id)}> +
+                                </div>
+                            </div>
+                            <div className={"cart-text-unit-tp"}>{item.price * item.count}руб./{item.unit_type}</div>
                         </div>
                     </Col>
-                    < Col span={3}>
-                        <div>{item.product.name}</div>
+                    <Col span={1} offset={1}>
+                        <div onClick={() => deleteProductFromCart(item.id)} className="cart-del-buttom">X
+                        </div>
                     </Col>
-                    < Col span={1}>
-                        {bool && <Input type="number" onClick={() => setBool(false)} value={item.count}/>}
-                        {!bool && <Input type="number" onChange={event => fprInput(event, item)}/>}
-                    </Col>
+                </div>
+            </Row>
+        )
+        }
+        <Row><Col span={6}>
+            {!menust&& <Button onClick={()=>changeMenuStyle()}>Выберите ваш город</Button>}
+            {menust&&
+                address.map(item=><p>{item.city}</p>
+                )}
 
-
-                    < Col offset={2} span={6}>
-                        <div>{item.product.price}</div>
-                    </Col>
-                    <Col offset={1} span={3}>
-                        <BlackButton onKlick={() => deleteProductFromCart(item.product.id)} label={"удалить"}/>
-                    </Col>
-                </Row>)}
-            <div className={"flexorder"}>
-                <Select onChange={chooseCity} defaultValue="Выберите город" style={{ width: 120 }} >
-                    {addresses.map(item => <Option value={item.id}
-                                                   >{item.city}</Option>
-                    )}
-
-
-                </Select>
-                <Button onClick={handle} disabled={!city || cart == false}> оформить заказ</Button>
+            </Col><Col offset={14} span={3}>
+            <div className={"confirm-order-box"}>Итого:{cart.length ? total : 0}руб.
+                <div onClick={() => handle} className={"confirm-order-botton"}>Оформить</div>
             </div>
-
-
-        </div>
-    )
-
+        </Col></Row>
+    </div>)
 }
 
 export default Cart

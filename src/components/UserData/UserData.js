@@ -21,9 +21,7 @@ import AddAddress from "../AddAddress/AddAddress";
 import BlackCart from "../BlackCart/BlackCart";
 
 function UserData({history}) {
-
-
-    const {isAuthenticated,setCartView, setIsAuthenticated, headerStatus, setHeaderStatus, addressChange, editButtom,cartst, setEditButtom, setMainStatus, mainStatus,setCartst} = useAuthentication()
+    const {isAuthenticated, setCartView, setIsAuthenticated, headerStatus, setHeaderStatus, addressChange, editButtom, cartst, setEditButtom, setMainStatus, mainStatus, setCartst} = useAuthentication()
     const [user, setUser] = useState();
     const [addresses, setAddress] = useState([]);
     const [edit, setEdit] = useState(false)
@@ -60,14 +58,10 @@ function UserData({history}) {
             setAddressState2(false)
         }
         setAddresListWiev(true)
-
-
         setAddressState(!addressState)
-
     }
 
     const changeEditAddress = async (id, city, street, building, flat) => {
-
         setEditButtom(!editButtom)
         setCity(city)
         setBuilding(building)
@@ -78,8 +72,6 @@ function UserData({history}) {
             setAddresChangeListWiev(true)
         }
         setAddresListWiev(false)
-
-
         setAddressState(!addressState)
     }
 
@@ -152,8 +144,6 @@ function UserData({history}) {
                 console.log('getAddress', e)
             }
         };
-        setCartView(false)
-        setCartst(false)
         fetchAddress();
 
     }, [addressChange])
@@ -231,9 +221,7 @@ function UserData({history}) {
             <>
                 <div className={"userdata"}>
                     <Row>
-
                         <Col offset={2}>
-
                             <div className={"nowrap"}><h1 className={"zagolovok2"}>Ваши персональные данные:{!edit ?
                                 <Button icon="edit" onClick={() => changeEdit()}>Редактировать</Button> : <><Button
                                     icon="edit"
@@ -288,7 +276,6 @@ function UserData({history}) {
                                      street={street}/>
                     }
                     {addresListWiev && <AddAddress addressState={addressState}/>}
-                    <BlackCart/>
                     < /div>
 
                     </>

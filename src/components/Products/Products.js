@@ -16,7 +16,7 @@ function Products() {
     const [isFetching, setIsFetching] = useState(false);
     const [canLoadMore, setCanLoadMore] = useState('can');
     const {
-        setHeaderStatus,setCartView,cartst,setCartst
+        setHeaderStatus, setCartView, cartst, setCartst
     } = useAuthentication();
 
     function init(initialCount) {
@@ -30,7 +30,7 @@ function Products() {
             const fetchedProducts = await getProducts(page);
             setProducts(products.concat(fetchedProducts.results));
             setCanLoadMore(fetchedProducts.next);
-            setPage(page+4 )
+            setPage(page + 4)
         } catch (e) {
             console.log('ошибка', e)
         } finally {
@@ -40,12 +40,9 @@ function Products() {
 
     useEffect(() => {
         fetchProducts()
-        setCartView(false)
-        setCartst(false)
     }, []);
 
-
-    const pageButtom = ()=>{
+    const pageButtom = () => {
         setIsFetching(true)
     }
 
@@ -55,11 +52,10 @@ function Products() {
     }, [isFetching]);
 
 
-
     return (
-        <><img src={header} className={'headerimage'}/>
+        <div className={"white"}><img src={header} className={'headerimage'}/>
             <div className={"center"}>
-            <p className={"organiko-title-m"}>We natural farmfood</p></div>
+                <p className={"organiko-title-m"}>We natural farmfood</p></div>
             <h1 className={"organiko-title"}>Our Products</h1>
 
             <Row>
@@ -72,13 +68,15 @@ function Products() {
                             products.map((product) => {
                                     return (
                                         <Col span={6}>
-                                           <Link to={`/product/${product.id}`}> <div className="product-div">
-                                                <img src={product.images.length ? product.images[0].url : Buttman}
-                                                     alt={"butman"}
-                                                     className="product-image"/>
-                                                <p className={"product-txet"}>{product.name}</p>
-                                                <p className={"product-txet2"}>{product.price}</p>
-                                           </div></Link>
+                                            <Link to={`/product/${product.id}`}>
+                                                <div className="product-div">
+                                                    <img src={product.images.length ? product.images[0].url : Buttman}
+                                                         alt={"butman"}
+                                                         className="product-image"/>
+                                                    <p className={"product-txet"}>{product.name}</p>
+                                                    <p className={"product-txet2"}>{product.price}</p>
+                                                </div>
+                                            </Link>
 
                                         </Col>
 
@@ -87,13 +85,12 @@ function Products() {
                             )
                         }
                     </Row>
-                    <div className={"center"}> {canLoadMore&&<Button className={"more-products-buttom-style"} type={"primary"} onClick={pageButtom}>Посмотреть еще</Button>}</div>
+                    <div className={"center"}> {canLoadMore &&
+                    <Button className={"more-products-buttom-style"} type={"primary"} onClick={pageButtom}>Посмотреть
+                        еще</Button>}</div>
                 </Col>
-
-
             </Row>
-            <BlackCart/>
-        </>
+        </div>
     )
 
 }
