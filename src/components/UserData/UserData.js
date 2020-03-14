@@ -18,19 +18,12 @@ import logo from "../../assets/images/cover.png";
 import ChangeAddresses from "../ChangeAddresses/ChangeAddresses";
 import header from "../../assets/images/header (3).png";
 import AddAddress from "../AddAddress/AddAddress";
-<<<<<<< HEAD
 import BlackCart from "../BlackCart/BlackCart";
-=======
->>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
 
 function UserData({history}) {
 
 
-<<<<<<< HEAD
     const {isAuthenticated,setCartView, setIsAuthenticated, headerStatus, setHeaderStatus, addressChange, editButtom,cartst, setEditButtom, setMainStatus, mainStatus,setCartst} = useAuthentication()
-=======
-    const {isAuthenticated, setIsAuthenticated, headerStatus, setHeaderStatus, addressChange, editButtom, setEditButtom, setMainStatus, mainStatus} = useAuthentication()
->>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
     const [user, setUser] = useState();
     const [addresses, setAddress] = useState([]);
     const [edit, setEdit] = useState(false)
@@ -295,17 +288,11 @@ function UserData({history}) {
                                      street={street}/>
                     }
                     {addresListWiev && <AddAddress addressState={addressState}/>}
-<<<<<<< HEAD
                     <BlackCart/>
                     < /div>
 
                     </>
 
-=======
-                    < /div>
-
-                    </>
->>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
 
                 </div>
 

@@ -38,8 +38,6 @@ function Header() {
             setState()
         }
     }
-
-
     return (
         <div className={'navbar'}>
 

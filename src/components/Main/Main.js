@@ -10,25 +10,16 @@ import logo from "../../assets/images/logo_dark.png";
 import organic from "../../assets/images/organic.png";
 import {useAuthentication, headerStatus, setHeaderStatus} from "../../context/authentication";
 import {Link} from "react-router-dom";
-<<<<<<< HEAD
 import BlackCart from "../BlackCart/BlackCart";
 
 function Main() {
     const {setIsAuthenticated, headerStatus, setHeaderStatus,setMainStatus,cartView,setCartView,setCartst} = useAuthentication()
-=======
-
-function Main() {
-    const {setIsAuthenticated, headerStatus, setHeaderStatus,setMainStatus} = useAuthentication()
->>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
 
 
     useEffect(() => {
                     setHeaderStatus(true)
-<<<<<<< HEAD
         setCartView(false)
         setCartst(false)
-=======
->>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
 
 
         }, []
@@ -42,10 +33,7 @@ function Main() {
                 <Link to={"/products"}> <Button  className={"greenbuttom-main"}
                         size={"large"}
                          htmlType="submit">Наши продукты</Button></Link></div>
-<<<<<<< HEAD
             <BlackCart/>
-=======
->>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
 
         </div>
     )

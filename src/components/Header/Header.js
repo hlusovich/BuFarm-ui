@@ -4,12 +4,8 @@ import {Link} from "react-router-dom";
 import logo from '../../assets/images/cover.png'
 import header from '../../assets/images/header (3).png'
 import {useAuthentication} from "../../context/authentication";
-<<<<<<< HEAD
 import cartimg from  "../../assets/images/cart.png"
 
-=======
-import cart from  "../../assets/images/cart.png"
->>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
 
 
 
@@ -36,11 +32,7 @@ function Header({history}) {
                 {!isAuthenticated&&<Col offset={1}span={2} ><Link to={"/loginpage"}><a className={"textcolor"}>Log in</a></Link></Col>}
                 {isAuthenticated&&<Col offset={1}span={2} ><Link to={"/loginpage"}><a onClick={logOut} className={"textcolor"}>Log out</a></Link></Col>}
                 {!isAuthenticated&&<Col offset={1} ><Link to={"/users"}><a className={"textcolor"}>Регистрация</a></Link></Col>}
-<<<<<<< HEAD
                 {isAuthenticated&&<Col offset={1} span={1}><Badge count={cart.length}> <img onClick={toggleCart} className={"cart-logo"} src={cartimg}/></Badge></Col>}
-=======
-                <Col offset={1} span={1}><Badge count={3}> <img className={"cart-logo"} src={cart}/></Badge></Col>
->>>>>>> b5187551781c8cae8a9658a84f39834bd5225001
                 <Col span={1} > </Col>
 
             </div>
