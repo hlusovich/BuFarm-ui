@@ -138,8 +138,6 @@ function ProductDetails() {
                     <Button className={'right'} type={"primary"} disabled={addButtonSt}
                             onClick={() => addComment(user.id, commentText, productDetails.id)}>добавить
                         комментарий</Button>
-
-
                 </Col>
             </Row>
         </div>

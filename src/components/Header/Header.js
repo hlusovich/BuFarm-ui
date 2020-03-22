@@ -26,7 +26,7 @@ function Header({history}) {
             <div className={"forheader"}>
                 <Col span={3}><Link to={"/main"}><img src={logo} className={"logo"} /></Link></Col>
                 {isAuthenticated&&< Col  offset = {1}span={1}> <Link to={"/userdata"} className={"textcolor"}>Ваши контакты</Link></Col>}
-                <Col offset={1} span={2}><Link to={'/userdata'}  ><a className={"textcolor"}>Мой заказ</a></Link></Col>
+                <Col offset={1} span={2}><Link to={'/cart'}  ><a className={"textcolor"}>Оформить заказ</a></Link></Col>
                 <Col offset={1}span={2}><Link to={"/products"} className={"textcolor"}>Продукты</Link></Col>
                 <Col offset={1}span={1}><Link className={"textcolor"} to={"/aboutus"}>О нас</Link></Col>
                 {!isAuthenticated&&<Col offset={1}span={2} ><Link to={"/loginpage"}><a className={"textcolor"}>Log in</a></Link></Col>}

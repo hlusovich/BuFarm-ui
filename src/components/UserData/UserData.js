@@ -36,23 +36,9 @@ function UserData({history}) {
     const [addressId, setAddressId] = useState(null)
     const [addressState, setAddressState] = useState("")
     const [addresListWiev, setAddresListWiev] = useState(false)
-
-
     const [addresChangeListWiev, setAddresChangeListWiev] = useState("")
     const [addressState2, setAddressState2] = useState("")
-    const changeCity = event => {
-        setCity(event.target.value)
-    }
-    const changeBuilding = event => {
-        setBuilding(event.target.value)
-    }
 
-    const changeFlat = event => {
-        setFlat(event.target.value)
-    }
-    const changeStreet = event => {
-        setStreet(event.target.value)
-    }
     const addAddressButtom = () => {
         if (addressState2) {
             setAddressState2(false)
@@ -277,10 +263,7 @@ function UserData({history}) {
                     }
                     {addresListWiev && <AddAddress addressState={addressState}/>}
                     < /div>
-
                     </>
-
-
                 </div>
 
 
