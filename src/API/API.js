@@ -11,6 +11,32 @@ export const signIn = async (body) => {
     return await processResponse(response);
 
 };
+
+export const deleteCommnet=async(id)=>{
+    const response = await fetch(`${API_URL}comments/${id}/`,{
+        method:"DELETE",
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('token')}`
+        },
+    });
+    return await processResponse(response);
+
+};
+
+export const createComment = async (body) => {
+    const response = await fetch(`${API_URL}comments/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `JWT ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify(body),
+    });
+    return await processResponse(response);
+
+};
+
 export const getProducts = async (page) => {
     const response = await fetch(`${API_URL}product/?offset=${page}`, {
         method: 'GET',
@@ -59,8 +85,10 @@ export const CreateOrder = async (body) => {
     const response = await fetch(
         `${API_URL}order/`, {
             method: "POST",
-            headers: {'Content-Type': `application/json`,
-                'Authorization': `JWT ${localStorage.getItem('token')}`},
+            headers: {
+                'Content-Type': `application/json`,
+                'Authorization': `JWT ${localStorage.getItem('token')}`
+            },
             body: JSON.stringify(body),
         });
     return await processResponse(response)
@@ -103,7 +131,7 @@ export const deleteAddress = async (id) => {
             'Content-Type': 'application/json',
             'Authorization': `JWT ${localStorage.getItem('token')}`,
         },
-            })
+    })
     return await processResponse(response);
 };
 export const verifyToken = async (body) => {
@@ -118,7 +146,7 @@ export const verifyToken = async (body) => {
     })
     return await processResponse(response);
 };
-export const patchUserData = async (body,id) => {
+export const patchUserData = async (body, id) => {
     const response = await fetch(`${API_URL}users/${id}/`, {
 
         method: 'PATCH',
@@ -131,7 +159,7 @@ export const patchUserData = async (body,id) => {
     })
     return await processResponse(response);
 };
-export const patchUserAddress = async (body,id) => {
+export const patchUserAddress = async (body, id) => {
     const response = await fetch(`${API_URL}addresses/${id}/`, {
         method: 'PATCH',
         headers: {

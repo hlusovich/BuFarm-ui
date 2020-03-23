@@ -21,14 +21,14 @@ function Main() {
         }, []
     )
 
-    return (<div class={"main__conteiner"}><img className={"organic-img-style"} src={organic}>
+    return (<><img className={"organic-img-style"} src={organic}>
         </img>
             <div className={"div-for-main"}><h3 className={"green-main"}>Grown with love</h3><h1
                 className={"white-main"}>Мы выращиваем лучшие продукты</h1>
                 <Link to={"/products"}> <Button className={"greenbuttom-main"}
                                                 size={"large"}
                                                 htmlType="submit">Наши продукты</Button></Link></div>
-        </div>
+        </>
     )
 
 
