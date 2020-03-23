@@ -65,7 +65,9 @@ function App() {
             <CartProvider>
                 <Suspense fallback={<div><Spinner/></div>}>
                     {headerStatus && <Header/>}
-                    {mainPageСondition && <Main/>}
+                    <Route path={"/main"}>
+                     <Main/>
+                    </Route>
                     <Route path={"/loginpage"}>
                         <LoginPage/>
                     </Route>
