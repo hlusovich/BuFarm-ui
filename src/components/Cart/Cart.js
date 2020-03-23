@@ -143,7 +143,7 @@ function Cart({history}) {
             </Select>
         </Col><Col offset={9} span={2}>
             <div className={"confirm-order-box"}>Итого:{cart.length ? total : 0}руб.
-                <div onClick={ handle}  className={"confirm-order-botton"}>Оформить</div>
+                <div onClick={ handle}  className={"confirm-order-button"}>Оформить</div>
             </div>
         </Col></Row>}
     </div>)}

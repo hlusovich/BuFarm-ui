@@ -15,16 +15,9 @@ BlackCart.propTypes = {
 
 function BlackCart({fun, string}) {
     const {isAuthenticated, setIsAuthenticated, setCart, cartst, setCartst, cartView, setCartView, cart, deleteProductFromCart, addProductToCart} = useAuthentication()
-    const [xCond, setXCond] = useState(null)
     const [render, setRender] = useState(false)
-    const[total,setTotal] = useState(0)
-    const xbytton = () => {
-        if (xCond) {
-            setXCond(null)
-        } else {
-            setXCond(true)
-        }
-    }
+    const[total,setTotal] = useState()
+
     const cartToggle = () => {
         setCartst(!cartst)
     }
