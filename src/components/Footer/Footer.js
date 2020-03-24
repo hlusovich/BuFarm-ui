@@ -7,28 +7,29 @@ import {Link} from "react-router-dom";
 function Footer() {
     return (
         <div className={"footer"}>
-            <div className={"footer-text"}>
-                <Row>
-                    <div className={"footerflex"}>
-                        <Col span={6}><Link to={"./"}><img src={logo} className={"logoforfooter"}/></Link></Col>
-                        <Col span={6}></Col>
-                        <Col span={6}><p className={'footer-text-color'}>О нас</p>
-                            <div className={"greenlinefooter"}></div>
-                            <p className={'footer-text-color'}>  Еда, какой её видим мы. </p>
+            <div className={"footer__blur"}></div>
+            <div className={"footer__text"}>
+                    <div className={"footer__conteiner"}>
+                        <img className={"footer__image"} src={logo} />
+                        <div className={"footer__item--conteiner"}>
+                            <div className={"footer__item"}>О нас
+                            <div className={"greenline__footer"}></div>
+                                <div className={'footer__item line-height'}> <div >  Мы хотим, чтобы вы  </div><div > ощутили еду такой,какой ее видим мы!</div></div></div>
 
-                        </Col>
-                        <Col span={6} ><p className={'footer-text-color'}>Наши контакты</p>
+                        <div className={"footer__item"}>Наши контакты
                             <div className={"greenlinefooter"}></div>
-                            <p className={'footer-text-color'}>наш номер *******</p>
-                            <p className={'footer-text-color'}>наш email *******</p>
-                        </Col>
+                            <p className={'footer__item'}>наш номер *******</p>
+                            <p className={'footer__item'}>наш email *******</p></div>
+                        </div>
+
                     </div>
 
 
-                </Row>
+
             </div>
 
         </div>
+
     )
 
 }

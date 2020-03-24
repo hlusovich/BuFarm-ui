@@ -6,7 +6,7 @@ import {AddressIn, getAddress} from "../../API/API";
 import {useAuthentication} from "../../context/authentication";
 
 function AddAddress(props) {
-    const {isAuthenticated, setIsAuthenticated, headerStatus, setHeaderStatus,addressChange,editButtom,setEditButtom,setAddressChange} = useAuthentication()
+    const {addressChange,editButtom,setEditButtom,setAddressChange} = useAuthentication()
     const [addressState, setAddressState] = useState(true)
     const [addCity, setAddCity] = useState('')
     const [addBuilding, setAddBuilding] = useState('')
@@ -86,16 +86,15 @@ function AddAddress(props) {
             <Row>
                 <Form onSubmit={handleSubmitAddAddress}>
                     <Col>
-                        <Link to={"/loginpage"}><img src={logo} className={"logoforlogin"}/></Link>
-                        <h1 className={"zagolovok"}>Введите ваш адресс</h1>
-                        <div className={"greenline"}></div>
+                        <Link to={"/loginpage"}><img src={logo} className={"login__picture"}/></Link>
+                        <h1 className={"login__text"}>Введите ваш адресс</h1>
                         <Input
                             prefix={<Icon type="text" style={{color: 'rgba(0,0,0,.25)'}}/>}
                             placeholder="Введите город"
                             name="username"
                             onChange={changeAddCity}
                             size={"large"}
-                            className={"login-input"}
+                            className={"login__input"}
                             value={addCity}
                         />
                         <Input
@@ -104,7 +103,7 @@ function AddAddress(props) {
                             name="username"
                             onChange={changeAddStreet}
                             size={"large"}
-                            className={"login-input"}
+                            className={"login__input"}
                             value={addStreet}
                         /><Input
                         prefix={<Icon type="" style={{color: 'rgba(0,0,0,.25)'}}/>}
@@ -112,7 +111,7 @@ function AddAddress(props) {
                         name="username"
                         onChange={changeAddBuilding}
                         size={"large"}
-                        className={"login-input"}
+                        className={"login__input"}
                         value={addBuilding}
                     /><Input
                         prefix={<Icon type="" style={{color: 'rgba(0,0,0,.25)'}}/>}
@@ -120,7 +119,7 @@ function AddAddress(props) {
                         name="username"
                         onChange={changeAddFlat}
                         size={"large"}
-                        className={"login-input"}
+                        className={"login__input"}
                         value={addFlat}
                     />
 

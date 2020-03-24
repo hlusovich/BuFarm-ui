@@ -2,18 +2,18 @@ import React, {useState, useEffect} from 'react';
 import {Form, Icon, Input, Button, Checkbox, Row, Col, notification} from 'antd';
 import {signIn, UserIn} from "../../API/API";
 import {Link, withRouter} from "react-router-dom"
-import  {useAuthentication,headerStatus,setHeaderStatus} from "../../context/authentication";
+import {useAuthentication, headerStatus, setHeaderStatus} from "../../context/authentication";
 import logo from "../../assets/images/cover.png";
 
 function Users({history}) {
-    const { isAuthenticated,setIsAuthenticated,headerStatus,setHeaderStatus}=useAuthentication()
+    const {setIsAuthenticated, headerStatus, setHeaderStatus} = useAuthentication()
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [first_name, setFirst_name] = useState('')
     const [last_name, setLast_name] = useState('')
     const [info, setInfo] = useState('')
     const [passwordAgain, setPassworAgain] = useState('')
-    const [buttomStatus,setButtomStatus] = useState(true)
+    const [buttomStatus, setButtomStatus] = useState(true)
     const changePassword = (event) => {
         setPassword(event.target.value)
     };
@@ -50,13 +50,14 @@ function Users({history}) {
                         setIsAuthenticated(true);
                         const data2 = {
                             username: username,
-                            password: password,}
-                            notification.success({message:"поздравляем вы зарегестрированы"})
-                            const token = await signIn(data2)
+                            password: password,
+                        }
+                        notification.success({message: "поздравляем вы зарегестрированы"})
+                        const token = await signIn(data2)
                         setButtomStatus(true)
-                            localStorage.setItem('token', token.token);
-                            history.push('/addresses');}
-                     catch (e) {
+                        localStorage.setItem('token', token.token);
+                        history.push('/addresses');
+                    } catch (e) {
                         console.log('UserIn', e)
                     }
                 } else {
@@ -76,33 +77,22 @@ function Users({history}) {
         return re.test(email.toLowerCase());
     }
     useEffect(() => {
-            const wievHeader = () => {
-                if (window.location.href == "http://localhost:3000/loginpage" || window.location.href == "http://localhost:3000/addresses" || window.location.href == "http://localhost:3000/users") {
-                    setHeaderStatus(false)
-                }
-                else {
-                    setHeaderStatus(true)
-                }
-
-            }
-            wievHeader()
-        }
+            setHeaderStatus(false)
+        }, []
     )
     return (
-        <div className={"login-style"}>
+        <div className={"login__container"}>
             <Row>
                 <Form onSubmit={handleSubmit}>
                     <Col>
-                        <Link to={"/loginpage"}><img src={logo} className={"logoforlogin"} /></Link>
-                        <h1 className={"zagolovok"}>Введите данные для регистрации</h1>
-                        <div className={"greenline"}>
-                        </div>
+                        <Link to={"/loginpage"}><img src={logo} className={"login__picture"}/></Link>
+                        <h1 className={"login__text"}>Введите данные для регистрации</h1>
                         <Input required={true}
                                prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
                                placeholder="Введите email"
                                name="username"
                                onChange={changeUsername}
-                               className={"login-input"}
+                               className={"login__input"}
                                size={"large"}
                         />
                         <Input required={true}
@@ -111,7 +101,7 @@ function Users({history}) {
                                placeholder="Пароль"
                                name="password"
                                onChange={changePassword}
-                               className={"login-input"}
+                               className={"login__input"}
 
                         />
                         <Input required={true}
@@ -121,11 +111,11 @@ function Users({history}) {
                                name="password"
                                onChange={changePasswordAgain}
                                size={"large"}
-                               className={"login-input"}
+                               className={"login__input"}
                         />
                         <Input
                             prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
-                            className={"login-input"}
+                            className={"login__input"}
                             placeholder="Имя"
                             name="first_name"
                             onChange={changeFirst_name}
@@ -138,7 +128,7 @@ function Users({history}) {
                             placeholder="Фамилия"
                             name="last_name"
                             onChange={changeLast_name}
-                            className={"login-input"}
+                            className={"login__input"}
                         />
 
                         <Input
@@ -147,12 +137,13 @@ function Users({history}) {
                             name="info"
                             onChange={changeInfo}
                             size={"large"}
-                            className={"login-input"}
+                            className={"login__input"}
                         />
-                        <Button disabled={!buttomStatus} type="primary" htmlType="submit" className={"greenbuttom"} size={"large"}>
+                        <Button disabled={!buttomStatus} type="primary" htmlType="submit" className={"greenbuttom"}
+                                size={"large"}>
                             Зарегестрироваться
                         </Button>
-                        <Link to={"loginpage"}> <h3 className={"text-registracia"}>Уже есть аккаунт?</h3></Link>
+                        <Link to={"loginpage"}><h3 className={"noaccaunt__text"}>Уже есть аккаунт?</h3></Link>
                     </Col>
                 </Form>
             </Row>

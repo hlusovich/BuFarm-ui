@@ -15,16 +15,11 @@ function Products() {
     const [page, setPage] = useState(0);
     const [isFetching, setIsFetching] = useState(false);
     const [canLoadMore, setCanLoadMore] = useState('can');
-    const {
-        setHeaderStatus, setCartView, cartst, setCartst
-    } = useAuthentication();
+    const {setMainPageCondition} = useAuthentication();
 
     function init(initialCount) {
         return {count: initialCount}
-
     }
-
-
     const fetchProducts = async () => {
         try {
             const fetchedProducts = await getProducts(page);
@@ -40,6 +35,7 @@ function Products() {
 
     useEffect(() => {
         fetchProducts()
+        setMainPageCondition(false)
     }, []);
 
     const pageButtom = () => {
@@ -67,7 +63,7 @@ function Products() {
 
                             products.map((product) => {
                                     return (
-                                        <Col span={6}>
+                                        <Col md={6} xs={20}>
                                             <Link to={`/product/${product.id}`}>
                                                 <div className="product-div">
                                                     <img src={product.images.length ? product.images[0].url : Buttman}

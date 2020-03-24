@@ -92,7 +92,8 @@ function BlackCart({fun, string}) {
                     <div className="buy-btn">Оформить заказ</div>
                 </Link>
             </div>
-        </div>}</div>
+        </div>}
+        </div>
 
     )
 

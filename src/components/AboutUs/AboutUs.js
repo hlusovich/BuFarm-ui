@@ -10,19 +10,19 @@ import ok from '../../assets/images/ok.svg'
 function AboutUS() {
 
     return (
-        <div className={"white"}>
-            <img src={header} className={'headerimage'}/>
-            <h1 className={"aboutUs-text"}>Почему вы должны выбрать </h1>
-            <h1 className={'aboutUs-text2'}>BuFarm</h1>
+        <div className={"aboutUs__background"}>
+            <img src={header} className={'header__image'}/>
+            <h1 className={"aboutUs__text"}>Почему вы должны выбрать </h1>
+            <h1 className={'aboutUs__text2'}>BuFarm ??</h1>
             <Row>
-                <Col span={6} offset={3}>
-                    <img src={cows} className={"round-image"}/>
+                <div className={"aboutUs__container"}>
+                <Col md={6}  xs={18}>
+                    <img src={cows} className={"aboutUS__image"}/>
 
                 </Col>
-                <Col offset={6} span={7}>
-                    <h1 className={"aboutUs-chose-text"}>100% Organic</h1>
-                    <div className={"greenline-aboutUs"}></div>
-                    <div> Мы целенаправленно минимизируется использования искусственных (синтетических) препаратов —
+                <Col md={7} xs={24}>
+                    <h1 className={"aboutUs__item__text"}>100% Organic</h1>
+                    <div className={"aboutUs__stories"}> Мы целенаправленно минимизируем использование искусственных (синтетических) препаратов —
                         удобрений, пестицидов, стимуляторов роста, кормовых добавок и т.д. Насколько это возможно их
                         заменяют натуральными аналогами навозом, сидератами и т.д. Также для повышения урожайности более
                         активно используются севообороты и специальные методы обработки грунта.
@@ -36,6 +36,7 @@ function AboutUS() {
                         <div><img className={"ok-img-style"}src={ok}/>консервантов</div>
                     </div>
                 </Col>
+                </div>
             </Row>
         </div>
     )

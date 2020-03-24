@@ -13,24 +13,25 @@ import {Link} from "react-router-dom";
 import BlackCart from "../BlackCart/BlackCart";
 
 function Main() {
-    const {setIsAuthenticated, headerStatus, setHeaderStatus, setMainStatus, cartView, setCartView, setCartst} = useAuthentication()
-
-
+    const {setHeaderStatus, mainPageСondition} = useAuthentication()
+    console.log(window.location.pathname)
+    console.log("Location")
     useEffect(() => {
             setHeaderStatus(true)
         }, []
     )
-
-    return (<><img className={"organic-img-style"} src={organic}>
-        </img>
-            <div className={"div-for-main"}><h3 className={"green-main"}>Grown with love</h3><h1
-                className={"white-main"}>Мы выращиваем лучшие продукты</h1>
-                <Link to={"/products"}> <Button className={"greenbuttom-main"}
-                                                size={"large"}
-                                                htmlType="submit">Наши продукты</Button></Link></div>
-        </>
+    return (<div>
+            <img className={"main__image"} src={organic}>
+            </img>
+            <div className={"main__container"}>
+                <h3 className={"main__greentext"}>Grown with love</h3>
+                <div className={"main__whitetext"}>Мы выращиваем лучшие продукты</div>
+                <Link to={"/products"}> <Button className={"greenbuttom__main"} size={"large"} htmlType="submit">Наши
+                    продукты</Button>
+                </Link>
+            </div>
+        </div>
     )
-
 
 }
 

@@ -10,7 +10,7 @@ import {useAuthentication, headerStatus, setHeaderStatus} from "../../context/au
 function LoginPage({history}) {
     const [username, setUsername] = useState(null)
     const [login, setLogin] = useState(null)
-    const {setIsAuthenticated, headerStatus, setHeaderStatus, mainStatus, setMainStatus} = useAuthentication()
+    const {setIsAuthenticated, setHeaderStatus, setMainStatus} = useAuthentication()
     const validateEmail = (email) => {
         const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email.toLowerCase());
@@ -21,7 +21,6 @@ function LoginPage({history}) {
     const changeLogin = (event) => {
         setLogin(event.target.value)
     }
-
     const handleSubmit = async (event) => {
         event.preventDefault()
         const data = {
@@ -39,39 +38,23 @@ function LoginPage({history}) {
         }
     }
     useEffect(() => {
-            const wievHeader = () => {
-                if (window.location.href == "http://localhost:3002/loginpage" || window.location.href == "http://localhost:3002/addresses" || window.location.href == "http://localhost:3002/users") {
-                    setHeaderStatus(false)
-                } else {
-                    setHeaderStatus(true)
-                    console.log("да2")
-                }
-                setMainStatus(false)
-
-            }
-            wievHeader()
-        }, []
-    )
-    useEffect(() => {
             setHeaderStatus(false)
-
         }, []
     )
     return (
-        <div className={"login-style"}>
+        <div className={"login__container"}>
             <Row>
                 <Form onSubmit={handleSubmit}>
                     <Col>
-                        <Link to={"/loginpage"}><img src={logo} className={"logoforlogin"}/></Link>
-                        <h1 className={"zagolovok"}>Введите ваше имя и пароль</h1>
-                        <div className={"greenline"}></div>
+                        <Link to={"/main"}><img src={logo} className={"login__picture"}/></Link>
+                        <h1 className={"login__text"}>Введите ваше имя и пароль</h1>
                         <Input
                             prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}
                             placeholder="Введите имя"
                             name="username"
                             onChange={changeUsername}
                             size={"large"}
-                            className={"login-input"}
+                            className={"login__input"}
                         />
                         <Input
                             prefix={<Icon type="lock" style={{color: 'rgba(0,0,0,.25)'}}/>}
@@ -79,13 +62,12 @@ function LoginPage({history}) {
                             name="username"
                             onChange={changeLogin}
                             size={"large"}
-                            className={"login-input"}
+                            className={"login__input"}
                             type={"password"}
                         />
-
                         <Button className={"greenbuttom"} size={"large"} htmlType="submit">Войти</Button>
                         <Link to={"/users"}>
-                            <div className={"text-registracia"}>нет акаунта?</div>
+                            <div className={"noaccaunt__text"}>нет акаунта?</div>
                         </Link>
                     </Col>
                 </Form>
@@ -93,5 +75,4 @@ function LoginPage({history}) {
         </div>
     )
 }
-
 export default withRouter(LoginPage)
