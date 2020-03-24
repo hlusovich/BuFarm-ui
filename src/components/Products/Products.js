@@ -10,16 +10,12 @@ import {Link} from "react-router-dom";
 import BlackCart from "../BlackCart/BlackCart";
 
 function Products() {
-    const currentPosition = Math.round(window.pageYOffset + document.documentElement.offsetHeight);
     const [products, setProducts] = useState([]);
     const [page, setPage] = useState(0);
     const [isFetching, setIsFetching] = useState(false);
     const [canLoadMore, setCanLoadMore] = useState('can');
     const {setMainPageCondition} = useAuthentication();
 
-    function init(initialCount) {
-        return {count: initialCount}
-    }
     const fetchProducts = async () => {
         try {
             const fetchedProducts = await getProducts(page);
@@ -32,10 +28,8 @@ function Products() {
             setIsFetching(false)
         }
     };
-
     useEffect(() => {
         fetchProducts()
-        setMainPageCondition(false)
     }, []);
 
     const pageButtom = () => {
@@ -49,44 +43,33 @@ function Products() {
 
 
     return (
-        <div className={"white"}><img src={header} className={'headerimage'}/>
+        <><img src={header} className={'header__image'}/>
             <div className={"center"}>
-                <p className={"organiko-title-m"}>We natural farmfood</p></div>
-            <h1 className={"organiko-title"}>Our Products</h1>
-
-            <Row>
-                <Col span={3}>
-                </Col>
-                <Col span={18}>
-                    <Row>
-                        {
-
-                            products.map((product) => {
-                                    return (
-                                        <Col md={6} xs={20}>
-                                            <Link to={`/product/${product.id}`}>
-                                                <div className="product-div">
-                                                    <img src={product.images.length ? product.images[0].url : Buttman}
-                                                         alt={"butman"}
-                                                         className="product-image"/>
-                                                    <p className={"product-txet"}>{product.name}</p>
-                                                    <p className={"product-txet2"}>{product.price}</p>
-                                                </div>
-                                            </Link>
-
-                                        </Col>
-
-                                    )
-                                }
+                <p className={"organiko__title"}>We natural farmfood</p></div>
+            <h1 className={"organiko__title--green"}>Our Products</h1>
+            <Row> {
+                    products.map((product) => {
+                            return (
+                                <Col md={6} xs={11}>
+                                    <Link to={`/product/${product.id}`}>
+                                        <div className="product__container">
+                                            <img src={product.images.length ? product.images[0].url : Buttman}
+                                                 alt={"butman"}
+                                                 className="product__image"/>
+                                            <p className={"product__item--text"}>{product.name}</p>
+                                            <p className={"product__item--price"}>{product.price}руб.</p>
+                                        </div>
+                                    </Link>
+                                </Col>
                             )
                         }
-                    </Row>
-                    <div className={"center"}> {canLoadMore &&
-                    <Button className={"more-products-buttom-style"} type={"primary"} onClick={pageButtom}>Посмотреть
-                        еще</Button>}</div>
-                </Col>
+                    )
+                }
             </Row>
-        </div>
+            <div className={"center"}> {canLoadMore &&
+            <Button className={"product__more--buttom"} type={"primary"} onClick={pageButtom}>Посмотреть
+                еще</Button>}</div>
+        </>
     )
 
 }

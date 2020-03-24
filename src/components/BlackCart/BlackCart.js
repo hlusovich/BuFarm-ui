@@ -14,19 +14,16 @@ BlackCart.propTypes = {
 }
 
 function BlackCart({fun, string}) {
-    const {isAuthenticated, setIsAuthenticated, setCart, cartst, setCartst, cartView, setCartView, cart, deleteProductFromCart, addProductToCart} = useAuthentication()
+    const {setCart, cartst, setCartst, cartView, cart, deleteProductFromCart,} = useAuthentication()
     const [render, setRender] = useState(false)
-    const[total,setTotal] = useState()
-
+    const [total, setTotal] = useState(0)
     const cartToggle = () => {
         setCartst(!cartst)
     }
     const incrementCount = (id) => {
         let count = cart.find(item => item.id == id)
         count.count += 1
-        console.log(cart)
         setRender(!render)
-
     }
     const decrementCount = (id) => {
         let count = cart.find(item => item.id == id)
@@ -37,60 +34,62 @@ function BlackCart({fun, string}) {
     }
     useEffect(() => {
             setCart([].concat(cart))
-        let bill=cart.reduce((prev,current)=>prev+current.price*current.count,0)
-        setTotal(bill)
+            let bill = cart.reduce((prev, current) => prev + current.price * current.count, 0)
+            setTotal(bill)
         },
         [render])
     useEffect(() => {
             setCart([].concat(cart))
-            let bill=cart.reduce((prev,current)=>prev+current.price*current.count,0)
+            let bill = cart.reduce((prev, current) => prev + current.price * current.count, 0)
             setTotal(bill)
         },
         [cart.length])
     return (
         <div>{cartView &&
-        <div className={cartst ? "black-cart2" : "black-cart"}>
-            <div className={"center"}> Корзина
-            </div>
+        <div className={cartst ? "blackCart__in" : "blackCart__out"}>
+            <div className={"center"}> Корзина</div>
             <div className={"center"}><img src={by} alt={";j"} height={70}/></div>
-            <div class="black-line2"></div>
-            <div onClick={cartToggle} class="cart__close-btn">X</div>
-            <div class="fot">
-                {
-                    cart.map((item) =>
+            <div class="blackCart__line"></div>
+            <div onClick={cartToggle} class="backCart__closebtn">X</div>
+            <div class="blackCart__foter">
+                {cart.map((item) =>
+                    <div className={"blackCart__item"}>
                         <Row>
-                            <Col span={6} offset={1}>
+                            <Col span={5} offset={1}>
                                 <div><img src={item.images.length ? item.images[0].url : Buttman}
-                                          className={"photocart"}/></div>
+                                          className={"blackCart__img"}/></div>
                             </Col>
-                            <Col span={4} offset={1}>{item.name}</Col>
+                            <Col span={4} offset={2}>
+                                <div className={"textcenter"}>{item.name}</div>
+                            </Col>
                             <Col span={8} offset={1}>
-                                <div className={"column"}>
+                                <div className={"blackCart__column"}>
                                     <div className={"center"}>
-                                        <div className={"count-button-style"}
-                                             onClick={() => incrementCount(item.id)}> +
+                                        <div className={"blackCart__countbutton"}
+                                             onClick={() => decrementCount(item.id)}> -
                                         </div>
                                         <div>{(item.count) + " " + item.unit_type}</div>
-                                        <div className={"count-button-style"}
-                                             onClick={() => decrementCount(item.id)}>-
+                                        <div className={"blackCart__countbutton"}
+                                             onClick={() => incrementCount(item.id)}>+
                                         </div>
                                     </div>
                                     <div>{item.price * item.count}руб.</div>
                                 </div>
                             </Col>
                             <Col span={1} offset={1}>
-                                <div onClick={() => deleteProductFromCart(item.id)} className="shelf-item__del">X
+                                <div onClick={() => deleteProductFromCart(item.id)} className="blackCart__del">X
                                 </div>
                             </Col>
-                        </Row>)
+                        </Row></div>)
                 }
                 <Row>
-                    {cart.length&&<Col offset={13} span={9}>Итого:{total} руб.</Col>}
+                    <Col offset={13} span={9}>Итого:{total} руб.</Col>
                 </Row>
-
-                <Link to={"/cart"}>
-                    <div className="buy-btn">Оформить заказ</div>
-                </Link>
+                <div className={"blackCart__btn--position"}>
+                    <Link to={"/cart"}>
+                        <div className="blackCart__cartbtn">Оформить заказ</div>
+                    </Link>
+                </div>
             </div>
         </div>}
         </div>

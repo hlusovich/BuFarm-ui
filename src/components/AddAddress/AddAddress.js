@@ -4,9 +4,15 @@ import {Link} from "react-router-dom";
 import logo from "../../assets/images/cover.png";
 import {AddressIn, getAddress} from "../../API/API";
 import {useAuthentication} from "../../context/authentication";
+import PropTypes from "prop-types";
+import BlackCart from "../BlackCart/BlackCart";
+AddAddress.propTypes = {
+    condition: PropTypes.string,
+    setCondition:PropTypes.func
+}
 
 function AddAddress(props) {
-    const {addressChange,editButtom,setEditButtom,setAddressChange} = useAuthentication()
+    const {addressChange,setAddressChange} = useAuthentication()
     const [addressState, setAddressState] = useState(true)
     const [addCity, setAddCity] = useState('')
     const [addBuilding, setAddBuilding] = useState('')
@@ -28,6 +34,7 @@ function AddAddress(props) {
     const changeAddresState = () => {
         setAddressState(false)
         setFlag(true)
+        props.setCondition(false)
 
         }
 
@@ -61,32 +68,24 @@ function AddAddress(props) {
             }
             try {
                 const response = await AddressIn(data)
-                setAddressChange(!addressChange)
-
-
-
             } catch (e) {
                 console.log(e.name + "AddressIn")
-
             }}
-
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-            setAddressState(false)
+        props.setCondition(false)
         setAddCity("")
         setAddFlat("")
         setAddStreet("")
         setAddBuilding("")
 
     }
-    useEffect(()=>
-        setAddressState(true)
-    ,[props.addressState])
-    return (<div onClick={changeAddresState} className={addressState ? "blur2" : "empty"}>
-        <div onClick={preventEvent} className={!addressState ? "address-style2" : "address-style"}>
+
+    return (
+        <div onClick={changeAddresState} className={props.condition ? "blur" : "empty"}>
+        <div onClick={preventEvent} className={props.condition ? "userdata__address--in" : "userdata__address--out"}>
             <Row>
                 <Form onSubmit={handleSubmitAddAddress}>
                     <Col>
-                        <Link to={"/loginpage"}><img src={logo} className={"login__picture"}/></Link>
+                        <Link to={"/main"}><img src={logo} className={"login__picture"}/></Link>
                         <h1 className={"login__text"}>Введите ваш адресс</h1>
                         <Input
                             prefix={<Icon type="text" style={{color: 'rgba(0,0,0,.25)'}}/>}

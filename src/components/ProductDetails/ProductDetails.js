@@ -98,7 +98,7 @@ function ProductDetails() {
 
 
     return (<div className={"white"}>
-            <img src={header} className={'headerimage'}/>
+            <img src={header} className={'header__image'}/>
             <Row><Col offset={3} span={7}>
                 <div><h1 className={"product-name"}>{productDetails.name}</h1></div>
                 <div><img className={"product-details-image"} src={images}/></div>
@@ -115,11 +115,7 @@ function ProductDetails() {
                 </Col>
                 <Col span={10} offset={1}>
                     <div className={"product-text"}>
-                        Болгарский перец – это один из сортов сладкого Овощного перца, принадлежащего к семейству
-                        Пасленовые. В природе в диком виде овощной перец встречается в тропических регионах Америки и
-                        является многолетним растением, окультуренный перец разводится практически на всех континентах и
-                        является однолетним. Плоды болгарского перца могут быть красного, оранжевого, коричневого или
-                        желтого цветов, различной величины и формы.
+                        {productDetails.info}
                     </div>
                     <div className={"product-name"}>комментарии</div>
                     {commets.map(item => <div className={"comments"}>
