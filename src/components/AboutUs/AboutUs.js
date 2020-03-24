@@ -29,11 +29,11 @@ function AboutUS() {
                         Наши продукты питания более полезны и совершенно безопасны для здоровья человека, что не всегда можно сказать о продукции промышленного земледелия и животноводства.
                         органическое сельское хозяйство наносит минимальный вред окружающей среде.
                         <div>Наши продукты не содержат:</div>
-                        <div><img className={"ok-img-style"} src={ok}/>синтетических удобрений и пестицидов</div>
-                        <div><img className={"ok-img-style"}src={ok}/>генной инженерии;</div>
-                        <div><img className={"ok-img-style"}src={ok}/>осадков сточных вод</div>
-                        <div><img className={"ok-img-style"}src={ok}/>радионуклидов</div>
-                        <div><img className={"ok-img-style"}src={ok}/>консервантов</div>
+                        <div><img className={"aboutUs__ok"} src={ok}/>синтетических удобрений и пестицидов</div>
+                        <div><img className={"aboutUs__ok"}src={ok}/>генной инженерии;</div>
+                        <div><img className={"aboutUs__ok"}src={ok}/>осадков сточных вод</div>
+                        <div><img className={"aboutUs__ok"}src={ok}/>радионуклидов</div>
+                        <div><img className={"aboutUs__ok"}src={ok}/>консервантов</div>
                     </div>
                 </Col>
                 </div>

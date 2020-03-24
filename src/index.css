@@ -457,6 +457,7 @@ textmain2 {
     height: 100px;
     width: 100%;
     box-shadow: 0 0.05em;
+    z-index: 1;
 }
 
 
@@ -531,11 +532,7 @@ textmain2 {
 
 }
 
-.cart > img {
-    float: right;
-    height: 4em;
 
-}
 
 .navbar {
     background: #007bff !important;
@@ -659,64 +656,26 @@ h5 {
     z-index: 2;
 }
 
-.count-input {
-    width: 20% !important;
-}
-
-.product-details-image {
-    width: 20em;
-    margin-top: 0em;
-    object-fit: cover;
-}
-
-.product-details-image:hover {
-    object-fit: none;
-}
-
-.product-name {
-    text-transform: uppercase;
-    font-family: 'Gabriela', serif;
-    color: green;
-    text-size: large;
-    font-size: xx-large;
-    margin-right: 5em;
-    padding-left: 1.8em;
-}
-
-.product-text {
-    height: 23em;
-    margin-top: 11em;
-
-}
 
 
 
-.greenbuttom-product-details {
-    background: #4bd186 !important;
-    color: white !important;
-    border-radius: 0px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Pacifico', cursive;
-    border-color: #4bd186 !important;
-    margin-bottom: 2em;
-    margin-left: 1em;
-    width: 10em;
-    font-size: x-large !important;
 
 
-}
+
+
+
+
+
+
+
+
 
 .greenbuttom-product-details:hover {
     border-color: #0f963e !important;
     background: linear-gradient(to right, #4bd186 50%, #0f963e 50%) no-repeat scroll right bottom / 210% 100% #f4e9d7 !important;
 }
 
-.center-count-button {
-    margin-left: 5em;
-    margin-bottom: 5em;
-}
+
 
 
 
@@ -726,60 +685,22 @@ h5 {
     height: 0.1em;
 }
 
-.comments {
-    background: white;
-    height: 5em;
-    display: flex;
-    margin-bottom: 2em;
-    font-size: larger;
-    justify-content: space-between;
+
+
+
+
+
+/*Cart*/
+
+.cart__changeAddress{
+    width: 480px!important;
 }
-
-.coments-user-name {
-    margin-right: 2em;
-    display: flex;
-    color: #61dafb;
-    align-items: flex-end;
+.cart__image{
+    height: 100px;
 }
-
-.commetns-takson {
-    display: flex;
-    justify-content: center;
-    color: black;
-    font-size: xx-large;
-}
-
-.comment-icon {
-    width: 3em;
-}
-
-.ok-img-style {
-    width: 5%;
-    margin-bottom: 0.5em;
-}
-
-.right {
-    float: right;
-    margin-bottom: 2em;
-    margin-top: 1em;
-}
-
-.product-info {
-    width: 90%;
-}
-
-.comments-user-photo-and-text-style {
-    display: flex;
-    align-items: center;
-
-}
-
-
-
-
-
-.cart-block {
+.cart__block{
     margin: 2em;
+    margin-top: 1em!important;
     background: white;
     padding: 2.5% 0 2.5% 0;
     display: flex;
@@ -787,11 +708,11 @@ h5 {
     justify-content: space-between;
 }
 
-.cart-text {
+.cart__text {
     font-size: xx-large;
 }
 
-.cart-del-buttom {
+.cart__delbuttom {
     cursor: pointer;
     width: 16px;
     right: 5%;
@@ -802,11 +723,11 @@ h5 {
 
 }
 
-.cart-text-unit-tp {
+.cart__unit{
     font-size: unset;
 }
 
-.confirm-order-box {
+.cart__confirm--box {
     background: white;
     width: 110%;
     height: 8em;
@@ -844,7 +765,7 @@ h5 {
     padding-bottom: 20em;
 }
 
-.cart-product-name {
+.cart__product--name {
     margin-left: 3em;
 }
 
@@ -927,6 +848,9 @@ h5 {
     box-shadow: 0 0.05em;
 }
 /*AboutUs*/
+.aboutUs__ok{
+    height: 15px;
+}
 .aboutUs__text {
     text-align: center;
     margin-bottom: 0em !important;
@@ -1276,6 +1200,109 @@ h5 {
     font-family: 'Pacifico', cursive;
     width: 100%;
 }
+/*ProductDetails*/
+.productDetails__addcomment--button{
+    float: right;
+    margin-bottom: 2em;
+    margin-top: 1em;
+}
+
+.productDetails__name {
+    text-transform: uppercase;
+    font-family: 'Gabriela', serif;
+    color: green;
+    font-size: xx-large;
+    text-align: center;
+}
+.productDetails__comments--title {
+    margin-top: 100px;
+    text-transform: uppercase;
+    font-family: 'Gabriela', serif;
+    color: green;
+    font-size: xx-large;
+    text-align: center;
+}
+.productDetails__image {
+    width: 20em;
+    margin-top: 0em;
+    object-fit: cover;
+}
+.productDetails__count-button {
+    margin-left: 5em;
+    margin-bottom: 5em;
+}
+.productDetails__input {
+    width: 20% !important;
+}
+.productDetails__greenbuttom {
+    background: #4bd186 !important;
+    color: white !important;
+    border-radius: 0px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Pacifico', cursive;
+    border-color: #4bd186 !important;
+    margin-bottom: 2em;
+    margin-left: 1em;
+    width: 10em;
+    font-size: x-large !important;
+
+
+}
+.productDetails__text {
+    height: 23em;
+    margin-top: 11em;
+    width:40%
+
+}
+.productDetails{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10em;
+}
+.productDetails__comments {
+    background: white;
+    height: 5em;
+    display: flex;
+    margin-bottom: 2em;
+    font-size: larger;
+    justify-content: space-between;
+}
+
+.productDetails__coments--username {
+    margin-right: 2em;
+    display: flex;
+    color: #61dafb;
+    align-items: flex-end;
+}
+
+.productDetails__commetns--conteiner {
+    display: flex;
+    justify-content: center;
+    color: black;
+    font-size: xx-large;
+}
+
+.productDetails__comment--icon {
+    width: 3em;
+}
+
+
+
+
+
+.productDetails__info {
+    width: 90%;
+}
+
+.productDetails__comments--text {
+    display: flex;
+    align-items: center;
+
+}
+
+
 /*Products*/
 .product__container {
     margin: 5em 2em 5em 2em;
@@ -1338,6 +1365,11 @@ h5 {
     justify-content: center
 }
 
+.productDetails__comment--container{
+    overflow: auto;
+    height: 400px;
+}
+
 
 
 
@@ -1369,6 +1401,7 @@ h5 {
         font-size: x-small;
         line-height: 1.4;
     }
+
     /*Products*/
 
 
@@ -1386,6 +1419,49 @@ h5 {
         object-fit: contain;
         width: 80%;
     }
+
+}
+@media (max-width: 600px){
+    .productDetail__margin{
+        margin-bottom: 260px;
+    }
+    .productDetails__addcomment--button{
+        margin-left: 146px!important;
+        position: relative;
+    }
+    .productDetails__comments--title{
+        font-size: 20px;
+    }
+    .productDetails__addcomment{
+        width: 100%!important;
+    }
+    .productDetails__comments{
+        width: 100%!important;
+    }
+    .productDetails__greenbuttom{
+        font-size: medium!important;
+        margin-left: 24px;
+        margin-top: 0px;
+    }
+    .productDetails{
+        flex-direction: column;
+        margin-bottom: 100px!important;
+    }
+    .productDetails__name{
+        text-align: left;
+    }
+    .productDetails__text{
+        margin-top: 1em;
+        width: 90%;
+    }
+    .productDetails__image{
+        width: 200px;
+    }
+    .productDetails__count-button{
+        margin-left: 35px;
+        margin-bottom: 10px;
+    }
+
 }
 /*Mobilki*/
 @media (max-width: 400px) {
@@ -1441,6 +1517,9 @@ h5 {
     }
     .aboutUs__container{
         flex-wrap: wrap;
+    }
+    .aboutUs__stories{
+        font-size: small;
     }
     /*Main*/
     .main__whitetext{
@@ -1545,6 +1624,62 @@ h5 {
     }
     .organiko__title{
         display: none;
+    }
+    .cart__image{
+        height: 40px;
+    }
+
+
+    .cart__text {
+        font-size: small;
+    }
+
+    .cart__delbuttom {
+        font-size: small;
+
+    }
+
+    .cart__unit{
+        font-size: small;
+    }
+
+    .cart__confirm--box {
+        background: white;
+        width: 110%;
+        height: 8em;
+        margin-right: 2em;
+        margin-bottom: 2em;
+        padding: 1em;
+        font-size: initial;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: column;
+    }
+
+    .confirm-order-button {
+        height: 2em;
+        width: 100%;
+        background: cadetblue;
+        color: aliceblue;
+        text-align: center;
+        cursor: pointer;
+    }
+    .cart__product--name{
+        font-size: small;
+        margin-left: -10px;}
+    .cart__changeAddress{
+        width: 240px!important;
+        font-size: small!important;
+        margin-top: 20px!important;
+    }
+    .cart__confirm--box{
+        margin-top: 20px;
+        height: 6em;
+        margin-left: 170%;
+    }
+    .cart__select--item{
+        font-size: xx-small!important;
     }
 
 

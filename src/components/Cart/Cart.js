@@ -22,7 +22,6 @@ function Cart({history}) {
     const chooseCity = event => {
         setCity(event)
             }
-
     const incrementCount = (id) => {
         let count = cart.find(item => item.id == id)
         count.count += 1
@@ -98,61 +97,61 @@ function Cart({history}) {
         , [cart.length]
     )
     if(cart.length){
-    return (<div className={"white"}>
-        <img src={header} className={'headerimage'}/>
+    return (<>
+        <img src={header} className={'header__image'}/>
         <h1><b>Ваша корзина</b></h1>
-        <Row><Col span={6} offset={1}></Col><Col span={4} offset={1}><div className={"cart-product-name"}>Название</div></Col><Col span={8} offset={1}>
+        <Row><Col span={6} offset={1}></Col><Col span={4} offset={1}><div className={"cart__product--name"}>Название</div></Col><Col span={8} offset={1}>
             <div className={"center"}>Количество</div>
         </Col></Row>
         {cart.map((item) =>
             <Row>
-                <div className={"cart-block"}>
+                <div className={"cart__block"}>
                     <Col span={6} offset={1}>
                         <div><img src={item.images.length ? item.images[0].url : Buttman}
-                                  className={"image-cart"}/></div>
+                                  className={"cart__image"}/></div>
                     </Col>
                     <Col span={4} offset={1}>
-                        <div className={"cart-text"}>{item.name}</div>
+                        <div className={"cart__text"}>{item.name}</div>
                     </Col>
                     <Col span={8} offset={1}>
-                        <div className={"column"}>
+                        <div className={"blackCart__column"}>
                             <div className={"center"}>
-                                <div className={"count-button-style"}
+                                <div className={"blackCart__countbutton"}
                                      onClick={() => decrementCount(item.id)}>-
                                 </div>
 
-                                <div className={"cart-text"}>{(item.count) + " " + item.unit_type}</div>
-                                <div className={"count-button-style"}
+                                <div className={"cart__text "}>{(item.count) + " " + item.unit_type}</div>
+                                <div className={"blackCart__countbutton"}
                                      onClick={() => incrementCount(item.id)}> +
                                 </div>
                             </div>
-                            <div className={"cart-text-unit-tp"}>{item.price * item.count}руб./{item.unit_type}</div>
+                            <div className={"cart__unit"}>{item.price * item.count}руб./{item.unit_type}</div>
                         </div>
                     </Col>
                     <Col span={1} offset={1}>
-                        <div onClick={() => deleteProductFromCart(item.id)} className="cart-del-buttom">X
+                        <div onClick={() => deleteProductFromCart(item.id)} className="cart__delbuttom">X
                         </div>
                     </Col>
                 </div>
             </Row>
         )
         }
-        <Row><Col offset={1} span={10}>
-            <Select defaultValue={"Выберите ваш адресс"} onChange={chooseCity} style={{width:480}}>
-                {address.map(item=><Option value={item.city}><b>город:</b>{item.city} <b>улица:</b>{item.street} <b>здание:</b>{item.building} <b>квартира:</b>{item.flat}</Option>)}
+        <Row><Col offset={1} span={10} xs={20}>
+            <Select defaultValue={"Выберите ваш адресс"} onChange={chooseCity} className={"cart__changeAddress"}>
+                {address.map(item=><Option className={"cart__select--item"} value={item.city}><b>город:</b>{item.city} <b>улица:</b>{item.street} <b>здание:</b>{item.building} <b>квартира:</b>{item.flat}</Option>)}
             </Select>
-        </Col><Col offset={9} span={2}>
-            <div className={"confirm-order-box"}>Итого:{cart.length ? total : 0}руб.
+        </Col><Col   offset={1} md={2} xs={8}>
+            <div className={"cart__confirm--box"}>Итого:{cart.length ? total : 0}руб.
                 <div onClick={ handle}  className={"confirm-order-button"}>Оформить</div>
             </div>
         </Col></Row>}
-    </div>)}
+    </>)}
     else{
-        return <div className={"white"}>
-            <img src={header} className={'headerimage'}/>
+        return <>
+            <img src={header} className={'header__image'}/>
             <h1 className={"center"}><b>Ваша корзина пуста</b></h1>
                 <Link  to={"/products"}><div className={"cart-return-toproducts-href"}>Перейти к списку продуктов</div></Link>
-        </div>
+        </>
     }
 }
 
