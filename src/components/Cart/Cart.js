@@ -147,11 +147,11 @@ function Cart({history}) {
         </Col></Row>}
     </>)}
     else{
-        return <>
+        return <div className={"emptycart"}>
             <img src={header} className={'header__image'}/>
             <h1 className={"center"}><b>Ваша корзина пуста</b></h1>
                 <Link  to={"/products"}><div className={"cart-return-toproducts-href"}>Перейти к списку продуктов</div></Link>
-        </>
+        </div>
     }
 }
 

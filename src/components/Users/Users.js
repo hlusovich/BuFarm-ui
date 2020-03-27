@@ -85,7 +85,7 @@ function Users({history}) {
             <Row>
                 <Form onSubmit={handleSubmit}>
                     <Col>
-                        <Link to={"/loginpage"}><img src={logo} className={"login__picture"}/></Link>
+                        <Link to={"/main"}><img src={logo} className={"login__picture"}/></Link>
                         <h1 className={"login__text"}>Введите данные для регистрации</h1>
                         <Input required={true}
                                prefix={<Icon type="user" style={{color: 'rgba(0,0,0,.25)'}}/>}

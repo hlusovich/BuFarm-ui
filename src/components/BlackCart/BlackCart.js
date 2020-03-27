@@ -86,8 +86,8 @@ function BlackCart({fun, string}) {
                     <Col offset={13} span={9}>Итого:{total} руб.</Col>
                 </Row>
                 <div className={"blackCart__btn--position"}>
-                    <Link to={"/cart"}>
-                        <div className="blackCart__cartbtn">Оформить заказ</div>
+                    <Link  to={"/cart"}>
+                        <Button  disabled={!cart.length} className="blackCart__cartbtn">Оформить заказ</Button>
                     </Link>
                 </div>
             </div>

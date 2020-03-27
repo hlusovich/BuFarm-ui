@@ -3,8 +3,7 @@ import {Spin} from "antd";
 
 function Spinner() {
     return (
-
-       <div> <Spin tip={"загружается"} size="large" className='center-absolute' size="large"></Spin></div>
+       <div className='spinner'> <Spin tip={"загружается"} size="medium"  size="large"></Spin></div>
     )
 }
 
