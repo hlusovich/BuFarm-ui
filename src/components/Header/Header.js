@@ -39,8 +39,8 @@ function Header({history}) {
                     out</div></Link>}
                 {!isAuthenticated &&
                 <Link to={"/users"}><div  onClick={changeBurgerToggle} className={"header__text"}>Регистрация</div></Link>}
-            {isAuthenticated && <Badge count={cart.length}> <img onClick={toggleCart} className={"burger__menu--cart"}
-                                                                 src={cartimg}/></Badge>}
+            {isAuthenticated && <div><Badge count={cart.length}> <img onClick={toggleCart} className={"burger__menu--cart"}
+                                                                      src={cartimg}/></Badge></div>}
             </div>}
             <div className={"burger"}>
             <Link to={"/main"}><img src={logo} className={"header__logo"}/></Link>
