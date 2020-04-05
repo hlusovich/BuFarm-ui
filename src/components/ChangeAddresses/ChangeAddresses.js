@@ -6,8 +6,8 @@ import {AddressIn, getAddress, patchUserAddress} from "../../API/API";
 import {useAuthentication} from "../../context/authentication";
 import PropTypes from "prop-types";
 ChangeAddresses.propTypes = {
-    stait: PropTypes.string,
-    setStait: PropTypes.func
+    state: PropTypes.string,
+    setState: PropTypes.func
 }
 function ChangeAddresses(props) {
     const {addressChange, setAddressChange} = useAuthentication()
@@ -28,7 +28,7 @@ function ChangeAddresses(props) {
         setBuilding(event.target.value)
     }
     const changeAddresState = () => {
-        props.setStait(false)
+        props.setState(false)
     }
 
     const preventEvent = (event) => {
@@ -46,7 +46,7 @@ function ChangeAddresses(props) {
             const response = await patchUserAddress(data, props.id)
             const addresses = await getAddress();
             setAddressChange(!addressChange)
-            props.setStait(!props.stait)
+            props.setState(!props.state)
 
         } catch (e) {
             console.log(e.name + "AddressPatch")
@@ -69,7 +69,7 @@ function ChangeAddresses(props) {
          } catch (e) {
              console.log(e.name + "AddressIn")
          }
-        props.setStait(false)
+        props.setState(false)
         setCity("")
         setFlat("")
         setStreet("")
@@ -77,9 +77,9 @@ function ChangeAddresses(props) {
     }
 
     return (
-        <div onClick={changeAddresState} className={props.stait ? "blur" : "empty"}>
+        <div onClick={changeAddresState} className={props.state ? "blur" : "empty"}>
             <div onClick={preventEvent}
-                 className={props.stait ? "userdata__address--in" : "userdata__address--out"}>
+                 className={props.state ? "userdata__address--in" : "userdata__address--out"}>
                 <Row>
                     <Form onSubmit={props.type=="add"?addAddress:editAddressList}>
                         <Col>

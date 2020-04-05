@@ -35,7 +35,6 @@ function UserData() {
         setEditButtom(!editButtom)
         setAddressAddState(!addressAddState)
     }
-
     const changeEditAddress = async (id, city, street, building, flat) => {
         setCity(city)
         setBuilding(building)
@@ -47,7 +46,6 @@ function UserData() {
         }
         setAdressChangeState(!adressChangeState)
     }
-
     const changeData = async () => {
         if (validateEmail(email)) {
             const data = {
@@ -200,9 +198,9 @@ function UserData() {
                     }
                     {addresChangeListView &&
                     <ChangeAddresses id={addressId} city={city} building={building} flat={flat}
-                                     street={street} stait={adressChangeState} setStait={setAdressChangeState} title={"Измените ваш адресс"} type={"change"}/>
+                                     street={street} state={adressChangeState} setState={setAdressChangeState} title={"Измените ваш адресс"} type={"change"}/>
                     }
-                    {addresAddListView && <ChangeAddresses stait={addressAddState} setStait={setAddressAddState} title={"Добавить новый адресс"} type={"add"}/>}
+                    {addresAddListView && <ChangeAddresses state={addressAddState} setState={setAddressAddState} title={"Добавить новый адресс"} type={"add"}/>}
                     < /div>
                     </>
                 </div>
