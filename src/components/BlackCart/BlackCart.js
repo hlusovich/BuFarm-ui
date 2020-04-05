@@ -1,19 +1,15 @@
 import React, {useEffect, useState} from "react";
 import by from '../../assets/images/by.png'
 import PropTypes from "prop-types";
-import {useCart} from "../../context/cartContext";
 import Buttman from '../../assets/images/196.png'
 import {Link} from "react-router-dom";
 import {Button, Col, Row} from "antd";
-import {useAuthentication, cartst, setCartst, setCart} from "../../context/authentication";
+import {useAuthentication} from "../../context/authentication";
 
 
-BlackCart.propTypes = {
-    fun: PropTypes.func,
-    xf: PropTypes.func,
-}
 
-function BlackCart({fun, string}) {
+
+function BlackCart() {
     const {setCart, cartst, setCartst, cartView, cart, deleteProductFromCart,} = useAuthentication()
     const [render, setRender] = useState(false)
     const [total, setTotal] = useState(0)
@@ -26,7 +22,7 @@ function BlackCart({fun, string}) {
         setRender(!render)
     }
     const decrementCount = (id) => {
-        let count = cart.find(item => item.id == id)
+        let count = cart.find(item => item.id==id)
         if (count.count > 0) {
             count.count -= 1
             setRender(!render)

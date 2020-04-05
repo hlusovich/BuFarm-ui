@@ -10,10 +10,8 @@ import {
 import {Link,withRouter} from "react-router-dom";
 
 function Cart({history}) {
-    const [select,setSelect]=useState(false)
     const { Option } = Select;
     const {cart, setCart, deleteProductFromCart, setCartView, setCartst} = useAuthentication()
-    const [count, setCount] = useState(0)
     const [total, setTotal] = useState(0)
     const [render, setRender] = useState(false)
     const [address, setAddress] = useState([])
@@ -39,7 +37,6 @@ function Cart({history}) {
             }
             return orderedProductData
         }
-
         cart.map(item => {
             arrayOrdereProducts.push(createOrederedProducts(item))
         })
@@ -81,10 +78,6 @@ function Cart({history}) {
         };
         fetchAddress();
     },[])
-    const changeMenuStyle = ()=>{
-        setMenust(true)
-        console.log(menust)
-    }
     useEffect(() => {
             setCart([].concat(cart))
             let bill = cart.reduce((prev, current) => prev + current.price * current.count, 0)
