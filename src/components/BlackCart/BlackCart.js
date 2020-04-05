@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import by from '../../assets/images/by.png'
 import PropTypes from "prop-types";
-import {useCart} from "../../context/cart";
+import {useCart} from "../../context/cartContext";
 import Buttman from '../../assets/images/196.png'
 import {Link} from "react-router-dom";
 import {Button, Col, Row} from "antd";

@@ -45,7 +45,6 @@ function AuthenticationProvider(props) {
             value={{
                 isAuthenticated,
                 setIsAuthenticated,
-                logOut,
                 headerStatus,
                 setHeaderStatus,
                 addressChange,
@@ -67,7 +66,6 @@ function AuthenticationProvider(props) {
     );
 }
 
-
 function useAuthentication() {
     const context = React.useContext(AuthenticationContext);
     if (context === undefined) {
@@ -75,5 +73,4 @@ function useAuthentication() {
     }
     return context;
 }
-
 export {AuthenticationContext, AuthenticationProvider, useAuthentication};

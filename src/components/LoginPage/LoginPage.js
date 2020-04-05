@@ -1,11 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {Form, Icon, Input, Button, Checkbox, Row, Col, notification} from 'antd';
+import {Form, Icon, Input, Button,Row, Col, notification} from 'antd';
 import {signIn} from "../../API/API";
 import {withRouter} from 'react-router-dom'
 import {Link} from "react-router-dom";
-import header from '../../assets/images/header (3).png'
 import logo from "../../assets/images/cover.png";
-import {useAuthentication, headerStatus, setHeaderStatus} from "../../context/authentication";
+import {useAuthentication} from "../../context/authentication";
 
 function LoginPage({history}) {
     const [username, setUsername] = useState(null)

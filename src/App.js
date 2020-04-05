@@ -4,7 +4,7 @@ import React, {Suspense, useEffect, useState} from 'react';
 import {BrowserRouter as Router,Route} from "react-router-dom";
 import {useAuthentication} from "./context/authentication";
 import {verifyToken} from "./API/API";
-import {CartProvider} from "./context/cart";
+import {CartProvider} from "./context/cartContext";
 import Users from "./components/Users/Users";
 import Products from "./components/Products/Products";
 import Spinner from "./components/Spinner/Spinner";
@@ -47,7 +47,7 @@ function App() {
 
     useEffect(() => {
             const wievHeader = () => {
-                if (window.location.pathname == "/loginpage") {
+                if (window.location.pathname === "/loginpage") {
                     setHeaderStatus(false)
                 } else {
                     setHeaderStatus(true)
@@ -96,8 +96,6 @@ function App() {
             </CartProvider>
         </Router>
     )
-
-
 }
 
 export default App;

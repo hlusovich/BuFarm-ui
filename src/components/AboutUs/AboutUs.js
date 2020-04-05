@@ -2,13 +2,8 @@ import React from "react";
 import cows from '../../assets/images/farmer.jpg'
 import {Col, Row} from "antd";
 import header from "../../assets/images/header (3).png";
-import StepBackwardOutlined from "@ant-design/icons-svg/es/asn/StepBackwardOutlined";
 import ok from '../../assets/images/ok.svg'
-
-
-
 function AboutUS() {
-
     return (
         <div className={"aboutUs__background"}>
             <img src={header} className={'header__image'}/>
@@ -18,7 +13,6 @@ function AboutUS() {
                 <div className={"aboutUs__container"}>
                 <Col md={6}  xs={18}>
                     <img src={cows} className={"aboutUS__image"}/>
-
                 </Col>
                 <Col md={7} xs={24}>
                     <h1 className={"aboutUs__item__text"}>100% Organic</h1>
@@ -40,7 +34,5 @@ function AboutUS() {
             </Row>
         </div>
     )
-
 }
-
 export default AboutUS

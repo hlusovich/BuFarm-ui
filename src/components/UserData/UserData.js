@@ -1,26 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {Form, Icon, Input, Button, Checkbox, Row, Col, notification} from 'antd';
+import { Input, Button, notification} from 'antd';
 import {
-    AddressIn,
-    signIn,
-    getUser,
+        getUser,
     getAddress,
     deleteAddress,
     patchUserData,
-    UserIn,
-    patchUserAddress
-} from "../../API/API";
-import {withRouter} from 'react-router-dom'
-import {Link} from "react-router-dom";
-import BlackButton from "../BlackButton/BlackButton";
-import {useAuthentication, headerStatus, setHeaderStatus} from "../../context/authentication";
-import logo from "../../assets/images/cover.png";
-import ChangeAddresses from "../ChangeAddresses/ChangeAddresses";
+   } from "../../API/API";
+import {useAuthentication} from "../../context/authentication";
 import header from "../../assets/images/header (3).png";
-import AddAddress from "../AddAddress/AddAddress";
-import BlackCart from "../BlackCart/BlackCart";
-
-function UserData({history}) {
+import ChangeAddresses from "../ChangeAddresses/ChangeAddresses";
+function UserData() {
     const {setHeaderStatus, addressChange, editButtom, setEditButtom} = useAuthentication()
     const [user, setUser] = useState();
     const [addresses, setAddress] = useState([]);
@@ -28,7 +17,6 @@ function UserData({history}) {
     const [email, setEmail] = useState("")
     const [firstName, setFirstName] = useState("")
     const [familyName, setFamilyName] = useState("")
-    const [editAddress, setEditAddress] = useState("")
     const [city, setCity] = useState('')
     const [building, setBuilding] = useState('')
     const [flat, setFlat] = useState("")
@@ -94,17 +82,14 @@ function UserData({history}) {
     }
 
     const changeEmail = (event) => {
-        event.preventDefault()
         setEmail(event.target.value)
 
     }
     const changeFirstName = (event) => {
-        event.preventDefault()
         setFirstName(event.target.value)
 
     }
     const changeFamilyName = (event) => {
-        event.preventDefault()
         setFamilyName(event.target.value)
 
     }
@@ -140,9 +125,7 @@ function UserData({history}) {
         };
         fetchUser();
     }, []);
-    const handleSubmit = event => {
-        history.push("/addresses")
-    }
+
     const delAddress = async (productId) => {
         const newAddress = addresses.filter(product => product.id != productId);
         setAddress(newAddress)
@@ -170,7 +153,7 @@ function UserData({history}) {
         <div><img src={header} className={'header__image'}/>
             <>
                 <div className={"userdata"}>
-                    <div className={"userdata__title"}><h1 className={"userdata__title--text"}>Ваши персональные
+                    <div className={"userdata__tittle"}><h1 className={"userdata__title--text"}>Ваши персональные
                         данные:{!edit ?
                             <div><Button className={"userdata__change--buttom"} icon="edit" onClick={() => changeEdit()}>Редактировать</Button></div> :
                             <div><Button className={"userdata__change--buttom"} icon="edit" onClick={() => changeData()}>Изменить данные</Button><Button className={"userdata__change--buttom"}
@@ -178,7 +161,7 @@ function UserData({history}) {
                                 onClick={() => canceledButtom()}>Отмена</Button>
                             </div>}</h1>
                     </div>
-                    {user && (<ul>
+                    {user && (<ul className={"userdata__personaldata__conteiner"}>
                             <p className={"userdata__personaldata"}>Email</p>
                             <li><Input disabled={!edit}
                                        className={!edit ? "userdata__input--off" : "userdata__input--on"}
@@ -196,7 +179,7 @@ function UserData({history}) {
                             <a className={"userdata__greenline"}></a>
                             <h2 className={"userdata__personaldata"}>Список ваших адресcов</h2>
 
-                            {addresses.map((item) => <div className={"userdata__title"}><Button
+                            {addresses.map((item) => <div className={"userdata__tittle"}><Button
                                 className={"margin"}
                                 type="danger"
                                 shape="circle"
@@ -209,26 +192,20 @@ function UserData({history}) {
                                                                        value={" город " + item.city + " улица " + item.street + " дом " + item.building + " квартира " + item.flat}/>
                                 </p>
                             </div>)}
-
-
                             < Button className="userdata__addbuttom" onClick={addAddressButtom}>
                                 добавить адресс
                             </Button>
                         </ul>
-
                     )
                     }
                     {addresChangeListView &&
                     <ChangeAddresses id={addressId} city={city} building={building} flat={flat}
-                                     street={street} stait={adressChangeState} setStait={setAdressChangeState}/>
+                                     street={street} stait={adressChangeState} setStait={setAdressChangeState} title={"Измените ваш адресс"} type={"change"}/>
                     }
-                    {addresAddListView && <AddAddress condition={addressAddState} setCondition={setAddressAddState}/>}
+                    {addresAddListView && <ChangeAddresses stait={addressAddState} setStait={setAddressAddState} title={"Добавить новый адресс"} type={"add"}/>}
                     < /div>
                     </>
                 </div>
-
-
                 )
                 }
-
-                export default withRouter(UserData)
+                export default UserData

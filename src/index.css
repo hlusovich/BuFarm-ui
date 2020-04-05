@@ -138,7 +138,7 @@ code {
     width: 400px;
     border-color: gray;
     margin: auto;
-    margin-top: 20px;
+    margin-top: 6em;
     background: white;
     padding-top: 40px;
     padding-bottom: 40px;
@@ -476,6 +476,9 @@ code {
 }
 
 /*UserData*/
+.userdata__personaldata__conteiner{
+    margin-bottom: 0em!important;
+}
 .userdata__address--in {
     z-index: 1;
     border-color: gray;
@@ -518,11 +521,12 @@ code {
     background: #4bd186 !important;
     color: white !important;
     border-color: #4bd186 !important;
+    margin-bottom: 1em;
 }
 
 .userdata__input--editAdress {
     color: black !important;
-    width: 100% !important;
+    width: 180% !important;
 }
 
 .userdata__text {
@@ -564,13 +568,14 @@ code {
     background-image: url(https://30ihbf24xubr31p1zp2921c6-wpengine.netdna-ssl.com/wp-content/uploads/2018/03/home-bg2.jpg);
 }
 
-.userdata__title {
+.userdata__tittle {
     display: flex;
     margin-bottom: 2em;
-    align-items: center;
+    box-sizing: content-box;
 }
 
 .userdata__title--text {
+    margin-left: 1em;
     margin-top: 2em;
     color: #004700;
     font-family: 'Pacifico', cursive;
@@ -593,7 +598,6 @@ code {
 }
 
 .productDetails__comments--title {
-    margin-top: 100px;
     text-transform: uppercase;
     font-family: 'Gabriela', serif;
     color: green;
@@ -1204,7 +1208,7 @@ code {
 
     .userdata__input--editAdress {
         font-size: xx-small !important;
-        width: 30%;
+        width: 165%!important;
     }
 
     .userdata__title--text {

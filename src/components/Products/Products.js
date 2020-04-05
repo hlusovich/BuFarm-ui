@@ -1,21 +1,17 @@
-import React, {useEffect, useReducer, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Button} from "antd";
 import {useAuthentication} from "../../context/authentication";
 import {getProducts} from "../../API/API";
-import {Form, Icon, Input, Checkbox, Row, Col, notification} from 'antd';
+import {Row, Col} from 'antd';
 import Buttman from "../../assets/images/196.png"
 import header from "../../assets/images/header (3).png";
-import BlackButton from "../BlackButton/BlackButton";
 import {Link} from "react-router-dom";
-import BlackCart from "../BlackCart/BlackCart";
 
 function Products() {
     const [products, setProducts] = useState([]);
     const [page, setPage] = useState(0);
     const [isFetching, setIsFetching] = useState(false);
     const [canLoadMore, setCanLoadMore] = useState('can');
-    const {setMainPageCondition} = useAuthentication();
-
     const fetchProducts = async () => {
         try {
             const fetchedProducts = await getProducts(page);
@@ -48,30 +44,29 @@ function Products() {
                 <p className={"organiko__title"}>We natural farmfood</p></div>
             <h1 className={"organiko__title--green"}>Our Products</h1>
             <Row> {
-                    products.map((product) => {
-                            return (
-                                <Col md={6} xs={11}>
-                                    <Link to={`/product/${product.id}`}>
-                                        <div className="product__container">
-                                            <img src={product.images.length ? product.images[0].url : Buttman}
-                                                 alt={"butman"}
-                                                 className="product__image"/>
-                                            <p className={"product__item--text"}>{product.name}</p>
-                                            <p className={"product__item--price"}>{product.price}руб.</p>
-                                        </div>
-                                    </Link>
-                                </Col>
-                            )
-                        }
-                    )
-                }
+                products.map((product) => {
+                        return (
+                            <Col md={6} xs={11}>
+                                <Link to={`/product/${product.id}`}>
+                                    <div className="product__container">
+                                        <img src={product.images.length ? product.images[0].url : Buttman}
+                                             alt={"butman"}
+                                             className="product__image"/>
+                                        <p className={"product__item--text"}>{product.name}</p>
+                                        <p className={"product__item--price"}>{product.price}руб.</p>
+                                    </div>
+                                </Link>
+                            </Col>
+                        )
+                    }
+                )
+            }
             </Row>
             <div className={"center"}> {canLoadMore &&
             <Button className={"product__more--buttom"} type={"primary"} onClick={pageButtom}>Посмотреть
                 еще</Button>}</div>
         </>
     )
-
 }
 
 export default Products

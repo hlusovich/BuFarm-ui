@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {Form, Icon, Input, Button, Checkbox, Row, Col, notification} from 'antd';
+import {Form, Icon, Input, Button, Row, Col, notification} from 'antd';
 import {signIn, UserIn} from "../../API/API";
 import {Link, withRouter} from "react-router-dom"
-import {useAuthentication, headerStatus, setHeaderStatus} from "../../context/authentication";
+import {useAuthentication} from "../../context/authentication";
 import logo from "../../assets/images/cover.png";
 
 function Users({history}) {
@@ -78,7 +78,8 @@ function Users({history}) {
     }
     useEffect(() => {
             setHeaderStatus(false)
-        }, []
+
+        },
     )
     return (
         <div className={"login__container"}>
@@ -139,7 +140,8 @@ function Users({history}) {
                             size={"large"}
                             className={"login__input"}
                         />
-                        <Button disabled={!buttomStatus} type="primary" htmlType="submit" className={"greenbuttom"}
+                        <Button disabled={!buttomStatus || !first_name || !last_name} type="primary" htmlType="submit"
+                                className={"greenbuttom"}
                                 size={"large"}>
                             Зарегестрироваться
                         </Button>

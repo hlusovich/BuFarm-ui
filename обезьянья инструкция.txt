@@ -1,4 +1,0 @@
-python manage.py runserver -чтобы запустить бек
-npm start - запустить фронт
-grabar@23334gmail.com -один из логинов
-7081379pidr - password
