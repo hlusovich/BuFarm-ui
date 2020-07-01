@@ -1,0 +1,19 @@
+.spin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 150px;
+    margin-bottom: 190px;
+}
+.spin span{
+    font-size: 200px!important;
+}
+.spin div span i{
+    width: 75px!important;
+    height: 70px!important;
+    background-color: #38a817!important;
+}
+.spin div div{
+    font-size: xx-large;
+    color: #38a817!important;
+}

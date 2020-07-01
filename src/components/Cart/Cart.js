@@ -42,10 +42,11 @@ function Cart({history}) {
         })
         const orderData = {
             ordered_products: arrayOrdereProducts,
-            address_id: city.id,
+            address_id: 121,
         }
-        try {console.log("nen")
-            const response = await CreateOrder(orderData)
+        try {
+
+            await CreateOrder(orderData)
             notification.success({message:"ваш заказ успешно отправлен"})
             history.push("/main/")
         } catch (e) {

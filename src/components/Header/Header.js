@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import {Badge} from 'antd';
 import {Link, NavLink} from "react-router-dom";
 import logo from '../../assets/images/cover.png'
-import header from '../../assets/images/header (3).png'
 import {useAuthentication} from "../../context/authentication";
 import cartimg from "../../assets/images/cart.png"
 
@@ -54,10 +53,10 @@ function Header({history}) {
                 </Link>}
                 {isAuthenticated &&
                 <div><Badge count={cart.length}> <img onClick={toggleCart} className={"burger__menu--cart"}
-                                                      src={cartimg}/></Badge></div>}
+                                                      src={cartimg} alt={""}/></Badge></div>}
             </div>}
             <div className={"burger"}>
-                <Link to={"/main"}><img src={logo} className={"header__logo"}/></Link>
+                <Link to={"/main"}><img src={logo} className={"header__logo"} alt={""}/></Link>
                 <div onClick={changeBurgerToggle} className={"burger__toggle"}>
                     <div className={burger ? "burger__toggle--item" : "burger__toggle--item transform"}></div>
                 </div>

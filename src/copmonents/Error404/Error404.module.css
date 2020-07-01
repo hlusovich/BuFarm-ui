@@ -1,0 +1,17 @@
+.container{
+    background: #b0c9f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container div h3{
+    color: white;
+    text-align: center;
+    margin: 0;
+    text-transform: uppercase;
+    margin-bottom: 200px;
+    font-size: xx-large;
+}
+.container div img{
+    margin-top: 200px;
+}

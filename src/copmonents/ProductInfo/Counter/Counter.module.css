@@ -1,0 +1,25 @@
+.counter{
+    display: flex;
+    font-size:xx-large ;
+    justify-content: space-between;
+    cursor: pointer;
+    border: #f1eeea 0.1px solid;
+    border-width:thin  ;
+    width: 130px;
+
+}
+.counter div{
+    width: 30px;
+    text-align: center;
+    background: #7fca90;
+    color: white;
+}
+.counter div::selection{
+    background: transparent;
+
+}
+.counter div:hover{
+    color: papayawhip;
+
+}
+

@@ -1,0 +1,188 @@
+.header{
+    background: rgba(255,255,255,.6);
+    width: 100%;
+    height: 160px;
+    position: fixed;
+    z-index: 1;
+    box-sizing: border-box;
+    display: block;
+
+
+}
+.burgerLogo{
+    display: none;
+}
+.burgerMenu{
+    display: none;
+}
+.container{
+    margin: 0 auto;
+    width: 65%;
+    display: flex;
+    align-items: center;
+}
+.container div{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+
+}
+.logo{
+    display: flex;
+    justify-content: center!important;
+}
+.logo a img{
+    height: 150px;
+    object-fit: cover;
+
+}
+.item a{
+    cursor:pointer;
+    text-transform: uppercase;
+    text-decoration: none!important;
+    color: #282c34;
+    font-weight: bold;
+}
+.item:hover a{
+    color: #00b400!important;
+}
+.cart{
+    height: 30px;
+    cursor: pointer;
+}
+
+
+@media (max-width: 1180px) {
+    .container{
+        width: 90%;
+
+    }
+
+    
+}
+@media (max-width: 850px){
+.container{
+    font-size: smaller;
+
+}
+
+}
+@media(max-width: 600px){
+    .header{
+        display: none;
+    }
+    .burgerMenu{
+        display: flex;
+        flex-flow: column;
+        background: whitesmoke;
+        position: fixed;
+        align-items: baseline;
+        font-size: large!important;
+        z-index: 2;
+        justify-content: center;
+        width: 300px;
+        top:65px;
+        height: 150px;
+        padding-left: 30px;
+        box-sizing: border-box;
+    }
+    .burgerLogo{
+        position: fixed;
+        display: block;
+        margin-left: 40px;
+
+
+    }
+    .burgerLogo img{
+        height: 70px;
+        width: 70px;
+        top:0px
+    }
+    .mobileHeader{
+        height: 65px;
+        position: fixed;
+        background: whitesmoke;
+        width: 100%;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+
+    }
+    .burgerButton{
+        height: 1px;
+        width: 50px;
+        background: #282c34;
+        position: relative;
+        left: 80%;
+    }
+    .logo a img{
+       display: none;
+    }
+    .burger__toggle {
+        position: relative;
+        height: 30px;
+        width: 30px;
+        margin-top: 15px;
+    }
+
+    .burger__toggle--item {
+        margin-top: 50%;
+        position: absolute;
+        height: 3px;
+        width: 100%;
+        background: black;
+
+    }
+
+    .burgerButton:after,
+    .burgerButton:before {
+        content: "";
+        display: block;
+        height: 2px;
+        background: black;
+        width: 100%;
+        position: absolute;
+        transition: transform 0.2s linear;
+    }
+
+    .burgerButton:after {
+        transform-origin: right top;
+        top: 15px;
+    }
+
+    .burger__menu {
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        z-index: 2;
+        margin-top: 62px;
+        height: 200px;
+        background: white;
+        width: 160px;
+        position: fixed;
+        padding-left: 20px;
+        justify-content: space-evenly;
+        border-top: 1.19px solid grey;
+
+    }
+
+
+    .burgerButton:before {
+        transform-origin: left bottom;
+        bottom: 15px;
+    }
+
+    .transform {
+        height: 0
+    }
+
+    .transform:after {
+        transform: rotate(45deg) translateY(0px) translateX(-10px);
+    }
+
+    .transform:before {
+        transform: rotate(-45deg) translateY(21px) translateX(-13px);
+
+    }
+}
+

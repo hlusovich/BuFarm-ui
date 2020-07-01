@@ -1,0 +1,55 @@
+.container{
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    width: 600px;
+}
+.container div img {
+    height: 45px;
+    border: 0px!important;
+}
+.line{
+    background: #f1eeea;
+    width: 400px;
+    height: 1px;
+    margin-bottom: 30px;
+}
+.container div div{
+    color: #6d6dff;
+    font-size: large;
+}
+.deleteButton{
+    height: 15px!important;
+    cursor: pointer;
+}
+.item{
+    display: flex;
+    justify-content: space-between;
+    width: 180px;
+}
+.item img{
+    margin-right: 0px!important;
+    position: relative;
+    top:-45px;
+    height: 30px!important;
+    border: 0!important;
+
+}
+@media (max-width: 650px) {
+    .container{
+        width: 300px;
+        display: flex;
+        justify-content: space-between;
+
+    }
+    .container div img {
+        height: 25px;
+        width: 25px;
+        border: 0px!important;
+    }
+    .container div div{
+        color: #6d6dff;
+        font-size: small;
+    }
+
+}

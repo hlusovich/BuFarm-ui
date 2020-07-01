@@ -1,0 +1,93 @@
+.container  {
+
+    height: 1000px;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url("../../images/field.jpg");
+    display: flex;
+    align-items: center;
+}
+
+.form {
+    height: 800px;
+    width: 550px;
+    background: whitesmoke;
+    border-radius: 10px;
+    margin: 0 auto;
+
+}
+.header{
+    background: #f4ca36;
+    height: 160px;
+    color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    font-family: 'Abril Fatface', cursive;
+    margin-bottom: 100px;
+}
+.header div img{
+    height: 90px;
+}
+.header div{
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    font-size: xx-large;
+    font-weight: 400;
+
+}
+.fields{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+}
+.fields input{
+    font-size: large;
+    width: 300px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+
+}
+.submit_button{
+    margin-top: 30px;
+    background: #f4ca36;
+    height: 60px;
+    color: white;
+    padding: 5px;
+    font-family: "Abril Fatface", cursive!important;
+    width: 200px;
+    font-size: 30px!important;
+    text-align: center;
+    border: none;
+    outline: none;
+
+}
+.submit_button:hover{
+    color: #38a817;
+    cursor: pointer;
+
+}
+.submit_button::selection{
+    background: transparent;
+}
+.back{
+    background: white;
+    height: 160px;
+    width: 100%;
+}
+@media (max-width: 800px) {
+    .form{
+        height: 700px;
+        width: 350px;
+    }
+
+}
+@media (max-width: 450px) {
+    .container{
+        width: 120%;
+    }
+
+}

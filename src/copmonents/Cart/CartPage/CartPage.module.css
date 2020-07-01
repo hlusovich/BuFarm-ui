@@ -1,0 +1,113 @@
+.emptyCart{
+    margin: 0 auto;
+    width: 80%;
+    height: 80px;
+    background-color: #f7f6f7;
+    border-width: 2px;
+    border-top: 3px solid #1e85be;
+    margin-bottom: 150px;
+    font-size: x-large;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+.line{
+    margin: 0 auto;
+    background:#eee ;
+    height: 1px;
+    width: 60%;
+    margin-top: 20px;
+
+}
+.fullCart{
+    max-width: 100%;
+}
+.cartHeader{
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin: 0 auto;
+    font-weight: bold;
+}
+.product{
+    width: 30%;
+}
+.price{
+    width: 30%;
+    text-align: center;
+}
+.quantity{
+    width: 30%;
+    text-align: center;
+}
+.subtotal{
+    width: 40%;
+    text-align: center;
+}
+.checkOutbtn{
+    font-size: x-large!important;
+    padding: 0 15px!important;
+    color:#38a817!important;
+    border-color: #38a817 !important;
+    outline: none!important;
+    background: white!important;
+    border-width: 2px;
+    border-bottom: #38a817 inset!important;
+    border-right: #38a817 inset!important;
+    font-family: 'Abril Fatface', cursive;
+    cursor: pointer;
+    height: 40px;
+
+}
+.cartFooter{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 1100px;
+    margin-bottom: 250px;
+    margin-top: 100px;
+    box-sizing: border-box;
+    height: 100px;
+}
+.total{
+    margin-left: 70%;
+    color: #00b400;
+    font-size: xx-large;
+
+}
+.total span{
+    color: #282c34;
+    margin-right: 4px;
+}
+@media (max-width: 1100px){
+    .fullCart{
+        width: 90%;
+    }
+    .cartFooter{
+        width: 700px;
+    }
+}
+
+@media (max-width: 800px){
+    .fullCart{
+        width: 100%;
+    }
+    .cartFooter{
+        width: 100%;
+    }
+}
+@media (max-width: 600px) {
+    .emptyCart{
+        font-size: medium;
+    }
+    .cartHeader{
+        font-size:x-small;
+    }
+    .total {
+        font-size: medium;
+
+    }
+    .cartHeader{
+        width: 90%;
+    }
+
+}

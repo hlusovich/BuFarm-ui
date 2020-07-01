@@ -4,7 +4,7 @@ import {getProductsDetails, getUser, createComment, deleteCommnet} from "../../A
 import {Button, Col, Icon, Input, notification, Row} from "antd";
 import header from "../../assets/images/header (3).png";
 import {useAuthentication} from "../../context/authentication";
-import icon from '../../assets/images/icon1.png'
+
 
 function ProductDetails() {
     const {id} = useParams()
@@ -66,8 +66,7 @@ function ProductDetails() {
         if (count > 0) {
             setCount(count - 1)
         }
-        return
-    }
+            }
     const addProductButtom = () => {
         productDetails.count = count
         addProductToCart(productDetails)
@@ -131,7 +130,7 @@ function ProductDetails() {
                             <div className={"productDetails__comments--text"}>
                                 <div className={"productDetails__coments--username"}><img
                                     className={"productDetails__comment--icon"}
-                                    src={icon}/>
+                                    alt={"dsf"}/>
                                     <div className={"small"}>{item.name}</div>
                                 </div>
                                 <div>{item.text}</div>

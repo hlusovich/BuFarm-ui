@@ -1,0 +1,239 @@
+.changeDataContainer {
+    width: 400px;
+    position: absolute;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+}
+.container{
+    max-height: 1400px!important;
+    box-sizing: border-box;
+    max-width: 100%;
+    margin-bottom: 700px;
+}
+
+.changeDataContainer div input {
+    margin: 10px;
+    width: 330px;
+    height: 40px;
+    font-size: x-large;
+}
+
+.changeDataContainer div {
+    display: flex;
+    align-items: center;
+}
+
+.changeDataContainer div div {
+    width: 25%;
+}
+
+.submitButton {
+    outline: none !important;
+    border: none !important;
+    background: #7fca90 !important;
+    font-size: x-large;
+    padding: 0 0 !important;
+    border-bottom: #7fca90 inset !important;
+    font-family: 'Abril Fatface', cursive;
+    color: white;
+    position: relative;
+    left: 105px;
+    margin-top: 20px;
+    cursor: pointer;
+    width: 70%;
+
+}
+.whiteBlock{
+    display: block;
+    top: -1400px;
+    height: 800px;
+    width: 1px;
+    background: white;
+
+}
+
+.submitButton:hover {
+    color: wheat;
+}
+
+.cartIn  >span {
+    animation-name: exa;
+    position: relative;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    display: block;
+    top: -1400px;
+}
+.cartOut > span{
+    position: relative;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    display: block;
+    animation-name:exa2;
+    top: -1400px;
+
+}
+
+@keyframes exa {
+    from {
+        left: 150%;
+        top: -1400px;
+    }
+    to {
+        left: 33%;
+        top: -1400px;
+    }
+}
+@keyframes exa2 {
+    from {
+        left: 33%;
+        top: -1400px;
+    }
+    to {
+        left: 150%;
+        top: -1400px;
+    }
+}
+
+.addAddress {
+    outline: none !important;
+    border: none !important;
+    background: #7fca90 !important;
+    font-size: x-large;
+    padding: 0 15px;
+    border-bottom: #52ca60 inset !important;
+    font-family: 'Abril Fatface', cursive;
+    color: white;
+    position: relative;
+    top:30px;
+    left: 180px;
+    margin-bottom: 50px;
+}
+
+@keyframes exa3 {
+    from {
+        left: 150%;
+        top: -2199px;
+    }
+    to {
+        left: 33%;
+        top: -2199px;
+    }
+}
+@keyframes exa4 {
+    from {
+        left: 33%;
+        top: -2199px;
+    }
+    to {
+        left: 150%;
+        top: -2199px;
+    }
+}
+.cartInDown >span {
+    animation-name: exa3;
+    position: relative;
+    animation-duration: 2s;
+    display: block;
+    top: -2199px;
+    left:33%
+}
+.cartOutDown > span{
+    position: relative;
+    animation-duration: 2s;
+    display: block;
+    animation-name:exa4;
+    top: -2199px;
+    left:150%
+
+}
+.userDataItem{
+    font-size: x-large;
+}
+.editButton{
+    height: 50px;
+    position: relative;
+    right: -350px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.cow{
+    animation-name:cow;
+    animation-duration: 1.3s;
+    position: relative;
+}
+.myProfile{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    flex-flow: column;
+    top:-680px
+}
+@keyframes cow {
+    from{
+        right:500px ;
+    }
+    to{
+        right: 0px;
+    }
+}
+@media (max-width: 1200px) {
+    .myProfile{
+        align-items: start;
+        top:-10px
+    }
+
+
+
+}
+@media (max-width: 1000px) {
+  .cow{
+      max-width: 700px;
+  }
+
+
+
+}
+@media (max-width: 700px) {
+    .cow{
+        max-width: 350px;
+    }
+    .cartIn>span{
+        animation-name: exa;
+        left: 10px;
+        top:0px;
+        animation-name: none;
+        display: block;
+    }
+    .cartOut>span{
+        animation-name: none;
+        display: none;
+    }
+    .container{
+        height: 2500px!important;
+        max-height: 2500px;
+    }
+    .cartInDown>span{
+        display: block;
+        left: 10px;
+        top:-0px;
+        animation-name: none;
+    }
+    .cartOutDown>span{
+        animation-name: none;
+        display: none;
+    }
+    .editButton{
+        right: -150px;
+    }
+    .changeDataContainer{
+        width: 300px;
+    }
+
+
+
+
+}

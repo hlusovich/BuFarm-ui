@@ -1,0 +1,70 @@
+.container{
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+.Title{
+    font-family: Great Vibes;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #7fca90;
+    font-size: 60px;
+}
+.subTitle{
+    text-transform: uppercase;
+    font-size: 40px;
+    letter-spacing: .1em;
+    color: #392a25;
+    font-weight: 900;
+    line-height: 1.6;
+    margin-top: -10px;
+    text-align: center;
+}
+.text{
+    text-align: center;
+    width: 50%;
+    font-size:larger;
+    margin:0 auto;
+}
+.container img{
+    margin:0 auto;
+    width: 80%;
+    object-fit: contain;
+}
+.line{
+    background:#eee ;
+    height: 1px;
+    width: 60%;
+    margin-top: 50px;
+    margin-bottom: 80px;
+
+}
+.sheep{
+    animation-name:sheep;
+    animation-duration: 1.3s;
+    position: relative;
+    height: 500px;
+}
+@keyframes sheep {
+    from{
+        right:500px ;
+    }
+    to{
+        right: 0px;
+    }
+}
+@media (max-width: 800px) {
+    .container{
+        width: 110%;
+    }
+    .text{
+        font-size: medium;
+    }
+    .subTitle{
+        font-size: 25px;
+    }
+
+}

@@ -15,8 +15,10 @@ function Products() {
     const fetchProducts = async () => {
         try {
             const fetchedProducts = await getProducts(page);
+            console.log(fetchedProducts)
             setProducts(products.concat(fetchedProducts.results));
             setCanLoadMore(fetchedProducts.next);
+            console.log(fetchedProducts.next)
             setPage(page + 4)
         } catch (e) {
             console.log('ошибка', e)

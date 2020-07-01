@@ -1,0 +1,153 @@
+.container {
+    margin: 0 auto;
+    width: 80%;
+    display: flex;
+    margin-bottom: 200px;
+    margin-top: 140px;
+
+
+}
+
+.container h1 {
+    color: #5e5a54;
+    font-size: 34px;
+    text-align: left ;
+}
+
+.container h2 {
+    color: #5fbd74;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.container img {
+    height: 400px;
+    object-fit: cover;
+    margin-right: 200px;
+    border: #f1eeea solid;
+    border-width: thin;
+}
+
+.comments {
+    background: #f1eeea;
+    width: 400px;
+    height: 1px;
+    margin-bottom: 30px;
+}
+
+.comments:hover {
+    color: darkblue;
+}
+
+.container div h3 {
+    color: cadetblue;
+    cursor: pointer;
+}
+
+.container div h3:hover {
+    color: darkblue;
+}
+
+.container div h3 span {
+    font-size: small;
+    position: relative;
+    top: 3px;
+    left: -4px;
+}
+
+.container div input {
+    border-radius: 5px !important;
+    border-color: #f1eeea !important;;
+    width: 400px;
+    height: 50px;
+    border-top: 2px !important;
+    border-left: aquamarine;
+    font-size: large;
+    margin-top: 100px;
+    outline: none
+}
+
+.addCommentButton {
+    margin-left: 280px;
+    background: #38a817;
+    color: white;
+    padding: 7px;
+    margin-top: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    width: 150px;
+    font-size: large;
+
+
+}
+
+.addCommentButton::selection {
+    background: transparent;
+}
+
+.addCommentButton:hover {
+    color: #eded00;
+}
+
+.addToCartButton {
+    background: #7fca90;
+    color: white;
+    padding: 7px;
+    margin-top: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    width: 150px;
+    font-size: large;
+
+
+}
+
+.addToCartButton::selection {
+    background: transparent;
+}
+
+.addToCartButton:hover {
+    color: #eded00;
+}
+
+@media (max-width: 900px) {
+    .container {
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+        margin:0 auto;
+        box-sizing: border-box;
+        width: 80%;
+
+    }
+
+    .container img {
+        width: 350px;
+    }
+
+}
+@media (max-width: 450px) {
+    .container{
+        width: 80%;
+
+
+    }
+    .productInfo{
+        display: flex;
+        flex-flow: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .container h1{
+        text-align: center;
+    }
+    .container img{
+        margin-right: 0!important;
+    }
+
+
+}

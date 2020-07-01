@@ -1,0 +1,51 @@
+.productsList{
+    width: 90%!important;
+    max-width: 100% !important;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 89%;
+    margin:0 auto;
+}
+.button{
+    margin-bottom: 10px;
+    margin-left: 87%;
+    width: 170px;
+    background: #7fca90!important;
+    text-align: center;
+    border-radius: 3px;
+    height: 30px;
+    color: white;
+    padding-top: 2px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+@media (max-width: 1200px)  {
+    .button{
+        margin-left: 38%;
+    }
+
+}
+@media (max-width: 800px) {
+    .container{
+        width: 90%;
+
+    }
+    .button{
+        margin-left: 85%;
+    }
+
+
+}
+
+@media (max-width: 450px) {
+
+    .button{
+        margin-left: 65%;
+    }
+
+
+}

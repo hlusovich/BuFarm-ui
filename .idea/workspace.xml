@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="151ee68a-b13b-458f-a654-531dd862e655" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/images/icon1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Cart/Cart.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Cart/Cart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProductDetails/ProductDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ProductDetails/ProductDetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Products/Products.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Products/Products.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1W1nLCeOjnOsyWtGcSMNkJEbm0b" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Rick and Morty - Season 4 (WEBRip 720p)\BuFarm-ui\src\assets\images" />
+      <recent name="D:\Rick and Morty - Season 4 (WEBRip 720p)\BuFarm-ui\src\context" />
+      <recent name="D:\Rick and Morty - Season 4 (WEBRip 720p)\BuFarm-ui\src\components" />
+      <recent name="D:\WORK\BuFarm-ui\src\assets\images" />
+      <recent name="D:\WORK\BuFarm-ui\src\components\BlackCart" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Rick and Morty - Season 4 (WEBRip 720p)\BuFarm-ui\src\components\ErrorBoundary" />
+      <recent name="D:\WORK\BuFarm-ui\src\components\tryf" />
+      <recent name="D:\WORK\BuFarm-ui\src\assets\images" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Node.js.ProductDetails.js">
+    <configuration name="ProductDetails.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/components/ProductDetails/ProductDetails.js" working-dir="$PROJECT_DIR$/src/components/ProductDetails">
+      <method v="2" />
+    </configuration>
+    <configuration name="Redux.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/components/Redux/Redux.js" working-dir="$PROJECT_DIR$/src/components/Redux">
+      <method v="2" />
+    </configuration>
+    <configuration name="sfsdfg.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/sfsdfg.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.ProductDetails.js" />
+        <item itemvalue="Node.js.Redux.js" />
+        <item itemvalue="Node.js.sfsdfg.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="151ee68a-b13b-458f-a654-531dd862e655" name="Default Changelist" comment="" />
+      <created>1578325909222</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1578325909222</updated>
+      <workItem from="1578325910663" duration="1858000" />
+      <workItem from="1578425121783" duration="742000" />
+      <workItem from="1578442122810" duration="598000" />
+      <workItem from="1578610056106" duration="598000" />
+      <workItem from="1578672784096" duration="598000" />
+      <workItem from="1578674593624" duration="598000" />
+      <workItem from="1578676623204" duration="598000" />
+      <workItem from="1578749371514" duration="595000" />
+      <workItem from="1578758785643" duration="499000" />
+      <workItem from="1578759340825" duration="12985000" />
+      <workItem from="1579281481523" duration="27694000" />
+      <workItem from="1579714079348" duration="2481000" />
+      <workItem from="1579716573261" duration="2765000" />
+      <workItem from="1579817893604" duration="6855000" />
+      <workItem from="1579853697830" duration="20511000" />
+      <workItem from="1580028447926" duration="9993000" />
+      <workItem from="1580118918843" duration="682000" />
+      <workItem from="1580247988969" duration="17287000" />
+      <workItem from="1580630713868" duration="687000" />
+      <workItem from="1580650852942" duration="14240000" />
+      <workItem from="1580844826248" duration="189000" />
+      <workItem from="1580845035401" duration="8272000" />
+      <workItem from="1581271573848" duration="3176000" />
+      <workItem from="1581285924465" duration="600000" />
+      <workItem from="1581287727533" duration="601000" />
+      <workItem from="1581289539735" duration="468000" />
+      <workItem from="1581354046717" duration="598000" />
+      <workItem from="1581356166345" duration="627000" />
+      <workItem from="1581357979870" duration="969000" />
+      <workItem from="1581359815121" duration="770000" />
+      <workItem from="1581361879580" duration="637000" />
+      <workItem from="1581363691852" duration="596000" />
+      <workItem from="1581365493411" duration="595000" />
+      <workItem from="1581367306654" duration="595000" />
+      <workItem from="1581369375784" duration="595000" />
+      <workItem from="1581374670468" duration="595000" />
+      <workItem from="1581376483780" duration="595000" />
+      <workItem from="1581402669753" duration="597000" />
+      <workItem from="1581404480459" duration="597000" />
+      <workItem from="1581406293883" duration="598000" />
+      <workItem from="1581408148272" duration="599000" />
+      <workItem from="1581409957661" duration="599000" />
+      <workItem from="1581411881604" duration="598000" />
+      <workItem from="1581413691805" duration="599000" />
+      <workItem from="1581444401878" duration="596000" />
+      <workItem from="1581446209946" duration="596000" />
+      <workItem from="1581449467339" duration="597000" />
+      <workItem from="1581451618885" duration="30000" />
+      <workItem from="1582132412102" duration="3278000" />
+      <workItem from="1582280090270" duration="2232000" />
+      <workItem from="1582387872291" duration="427000" />
+      <workItem from="1582482433072" duration="1447000" />
+      <workItem from="1582567589765" duration="2956000" />
+      <workItem from="1582576224604" duration="1310000" />
+      <workItem from="1582579453458" duration="9510000" />
+      <workItem from="1582619770201" duration="11544000" />
+      <workItem from="1582698970824" duration="42832000" />
+      <workItem from="1583441847981" duration="19145000" />
+      <workItem from="1583880106638" duration="688000" />
+      <workItem from="1583882240881" duration="240000" />
+      <workItem from="1583882615453" duration="1364000" />
+      <workItem from="1583945032632" duration="39557000" />
+      <workItem from="1584374189423" duration="9159000" />
+      <workItem from="1584472190670" duration="600000" />
+      <workItem from="1584550817962" duration="597000" />
+      <workItem from="1584703025196" duration="2850000" />
+      <workItem from="1584871516199" duration="1443000" />
+      <workItem from="1584885925608" duration="1572000" />
+      <workItem from="1584988893560" duration="1650000" />
+      <workItem from="1584991081267" duration="21368000" />
+      <workItem from="1585043392904" duration="38651000" />
+      <workItem from="1585180851391" duration="11035000" />
+      <workItem from="1585476544851" duration="1220000" />
+      <workItem from="1585549817703" duration="9049000" />
+      <workItem from="1585653275473" duration="413000" />
+      <workItem from="1585758764160" duration="599000" />
+      <workItem from="1585861709955" duration="599000" />
+      <workItem from="1585953773865" duration="599000" />
+      <workItem from="1585981837281" duration="718000" />
+      <workItem from="1586088475625" duration="11186000" />
+      <workItem from="1586162412654" duration="2363000" />
+      <workItem from="1586246302894" duration="3819000" />
+      <workItem from="1586422789647" duration="1461000" />
+      <workItem from="1588008897828" duration="1248000" />
+      <workItem from="1588532422753" duration="646000" />
+      <workItem from="1588583092289" duration="1218000" />
+      <workItem from="1588669922235" duration="1803000" />
+      <workItem from="1588855198814" duration="599000" />
+      <workItem from="1588974604230" duration="1205000" />
+      <workItem from="1591395323656" duration="1771000" />
+      <workItem from="1591461022540" duration="6597000" />
+      <workItem from="1591883864247" duration="18000" />
+      <workItem from="1591994470558" duration="19003000" />
+      <workItem from="1592418179275" duration="3012000" />
+      <workItem from="1592571609433" duration="598000" />
+      <workItem from="1592605244381" duration="3840000" />
+      <workItem from="1592669968401" duration="597000" />
+      <workItem from="1592735044836" duration="1746000" />
+      <workItem from="1592837925800" duration="5418000" />
+      <workItem from="1593185993276" duration="1198000" />
+      <workItem from="1593339290195" duration="2022000" />
+      <workItem from="1593443464209" duration="311000" />
+      <workItem from="1593469474353" duration="5967000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/../itk/src/components/common/Paginator/Paginator.test.jsx" />
+        <option value="$PROJECT_DIR$/../itk/src/hoc/withSuspense.js" />
+        <option value="$PROJECT_DIR$/../itk/src/components/login/Login.jsx" />
+        <option value="$PROJECT_DIR$/../itk/src/components/Profile/ProfileInfo/ProfileDataForm.jsx" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/Spinner/Spinner.js</url>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

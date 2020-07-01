@@ -1,0 +1,153 @@
+.title{
+    height: 538px;
+    padding-top: 260px;
+    padding-bottom: 170px;
+    background-color: #7fca90;
+    background-repeat: no-repeat;
+    width: 100%;
+
+}
+.title img{
+    position: relative;
+    left: 35%;
+    animation-duration: 3s;
+   transition: opacity ;
+    animation-name: img;
+    bottom: 0;
+
+
+
+}
+.titleText{
+    font-family: Great Vibes;
+    font-size: 56px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    line-height: 1.5;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 50px;
+    animation-name: title;
+    position: relative;
+    animation-duration: 1s;
+}
+.line{
+    background:#eee ;
+    height: 1px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 80px;
+
+}
+.path{
+    margin-left: 200px;
+    font-size: large;
+    text-transform: uppercase;
+    margin-top: 20px;
+}
+.path a{
+    margin: 10px;
+    color: black;
+    cursor: pointer;
+    width: 100%;
+}
+.products{
+    position: relative;
+    left: 25%!important;
+    top:-67px;
+    animation-duration: 3s;
+    transition: opacity ;
+    animation-name: img;
+
+}
+.currentPage{
+    color: #7fca90!important;
+}
+@keyframes title {
+    from {
+        left: 1000px
+
+    }
+    to{
+        left:0px
+    }
+
+}
+@keyframes img {
+ from{
+     opacity: 0;
+ }
+    to{
+        opacity: 1;
+    }
+}
+@media (max-width: 1200px) {
+    .title img{
+        left: 10%;
+    }
+    .products{
+        left: 10%!important;
+    }
+
+}
+@media (max-width: 1000px){
+    .path{
+        margin-left: 100px;
+    }
+
+    .title img{
+        width: 600px;
+        top:-10px;
+        left: 3%;
+        bottom: 0;
+    }
+    .products{
+        left: 8%!important;
+        width: 200px;
+        top: 7px!important;
+    }
+}
+@media (max-width: 650px){
+    .path{
+        margin-left: 20px;
+    }
+    .title{
+        height: 150px;
+        padding-top: 70px;
+    }
+    .title img{
+        width: 290px;
+        left: 20%;
+        top:0px;
+    }
+    .titleText{
+        font-size: 30px;
+    }
+    .line{
+        margin-bottom: 20px;
+    }
+    .products{
+        left: 1%!important;
+        width: 260px!important;
+        top: 15px!important;
+    }
+}
+@media (max-width: 650px){
+    .title img{
+        width: 290px;
+        left: 20%;
+        top:0px;
+    }
+    .title{
+        width: 120%;
+    }
+
+}
+@media (max-width: 450px){
+    .title img{
+        width: 200px;
+        left: 20%;
+        top:23px;
+    }
+
+}
